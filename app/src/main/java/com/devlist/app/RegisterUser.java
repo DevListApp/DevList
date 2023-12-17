@@ -14,8 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.devlist.app.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -27,6 +37,7 @@ public class RegisterUser extends AppCompatActivity {
     Button btnBackRegister, btnRegisterUser;
     EditText registerName, registerEmail, registerPassword, confirmPassword;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth userAuth = FirebaseAuth.getInstance();
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -55,7 +66,9 @@ public class RegisterUser extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkPassword()) {
                     if(checkAllFields()) {
-                        constructor(registerName.getText().toString(), registerEmail.getText().toString(), registerPassword.getText().toString());
+                        User user = new User(registerName.getText().toString(), registerEmail.getText().toString(),
+                                registerPassword.getText().toString(), confirmPassword.getText().toString());
+                        createUserAuth(user);
                     }
                 }
 
@@ -94,27 +107,61 @@ public class RegisterUser extends AppCompatActivity {
         }
     }
 
-    public void constructor(String name, String email, String password) {
-        Map<String, Object> user = new HashMap<>();
-        user.put("nome", name);
-        user.put("email", email);
-        user.put("senha", password);
-
-        db.collection("usuario")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+    public void createUserAuth(User user) {
+        userAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(RegisterUser.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser authCurrentUser = userAuth.getCurrentUser();
+                            createUser(user);
+                        } else {
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            // Tratar o erro de senha fraca aqui
+                            if (task.getException() instanceof FirebaseAuthWeakPasswordException) {
+                                Toast.makeText(RegisterUser.this, "Senha fraca. A senha deve ter pelo menos 6 caracteres.", Toast.LENGTH_SHORT).show();
+
+                            } else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                Toast.makeText(RegisterUser.this, "Insira um email válido", Toast.LENGTH_SHORT).show();
+
+                            } else if (task.getException() instanceof FirebaseAuthUserCollisionException){
+                                Toast.makeText(RegisterUser.this, "Email já cadastrado!", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(RegisterUser.this, "Falha na autenticação.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+
+    }
+
+    public void createUser(User user) {
+        Map<String, String> name = new HashMap<>();
+        name.put("name", user.getName());
+        // Adiciona o usuário ao Firestore
+        db.collection("usuario")
+                .document(user.getName())
+                .set(name)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        try {
+                            Toast.makeText(RegisterUser.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Documento adicionado com sucesso");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(RegisterUser.this, "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show();
-                        Log.w(TAG, "Error adding document", e);
+                        Log.w(TAG, "Erro ao adicionar documento", e);
                     }
                 });
     }
+
 }

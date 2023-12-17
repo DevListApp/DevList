@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RegisterUser.class);
                 startActivity(intent);
-                onDestroy();
+                finish();
             }
         });
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), LoginUser.class);
                 startActivity(intent);
-                onDestroy();
+                finish();
             }
         });
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    
+
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".auth.LoginUser">
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:backgroundTint="@color/white"
-            android:id="@+id/btnBackRegister"
+            android:id="@+id/btnBackLogin"
             android:drawableLeft="@drawable/ic_arrow_back_24" />
     </LinearLayout>
 
@@ -48,7 +48,6 @@
         android:layout_height="0dp"
         android:backgroundTint="@color/purple"
         android:layout_weight="4"
-        app:cardCornerRadius="30dp"
         android:layout_marginTop="5dp"
         app:cardElevation="20dp">
         <LinearLayout
@@ -73,13 +72,14 @@
                 android:layout_marginTop="5dp"
                 app:cardElevation="20dp">
                 <EditText
-                    android:id="@+id/registerName"
+                    android:id="@+id/loginEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Digite seu email"
                     android:textColorHint="@color/gray"
                     android:background="@color/white"
                     android:padding="8dp"
+                    android:inputType="textEmailAddress"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background"
                     android:paddingStart="15dp"
@@ -103,8 +103,8 @@
                 android:layout_marginTop="5dp"
                 app:cardElevation="20dp">
                 <EditText
-                    android:id="@+id/registerEmail"
-                    android:inputType="textEmailSubject"
+                    android:id="@+id/loginPassword"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/white"
@@ -134,7 +134,7 @@
                     android:textSize="16sp" />
 
                 <Button
-                    android:id="@+id/btnLoginUser"
+                    android:id="@+id/btnForgoutUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple"
@@ -151,7 +151,7 @@
                 >
 
                 <Button
-                    android:id="@+id/btnRegisterUser"
+                    android:id="@+id/btnLoginUser"
                     android:layout_width="180dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
