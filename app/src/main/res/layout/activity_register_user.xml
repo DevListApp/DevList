@@ -4,13 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fillViewport="true"
     tools:context=".RegisterUser">
     <LinearLayout
         android:background="@color/purple"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -173,7 +176,6 @@
 
             </LinearLayout>
 
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -181,8 +183,7 @@
             android:orientation="horizontal"
             android:gravity="bottom"
             android:paddingRight="30dp"
-            android:paddingLeft="30dp"
-            >
+            android:paddingLeft="30dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -207,8 +208,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="30dp"
-            >
+            android:padding="30dp">
 
             <Button
                 android:id="@+id/btnRegisterUser"
@@ -225,8 +225,5 @@
 
 
         </LinearLayout>
-
-
-
     </LinearLayout>
 </ScrollView>
