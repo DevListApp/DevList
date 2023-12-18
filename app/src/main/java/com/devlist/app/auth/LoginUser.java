@@ -24,21 +24,25 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginUser extends AppCompatActivity {
 
+    //cria as variáveis
     EditText loginEmail, loginPassword;
-    Button btnBackLogin, btnLoginUser;
-    FirebaseAuth authUser = FirebaseAuth.getInstance();
+    Button btnBackLogin;
+    Button btnLoginUser;
+    Button btnForgoutUser;
+    FirebaseAuth authUser = FirebaseAuth.getInstance(); //instacia auth do firebase
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_user);
+        setContentView(R.layout.activity_login_user); //Carrega essa activity
 
-        btnBackLogin = findViewById(R.id.btnBackLogin);
+        btnBackLogin = findViewById(R.id.btnBackLogin);//atribuí as variáveis aos compoenntes
         btnLoginUser = findViewById(R.id.btnLoginUser);
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
+        btnForgoutUser = findViewById(R.id.btnForgoutUser);
 
-        btnBackLogin.setOnClickListener(new View.OnClickListener() {
+        btnBackLogin.setOnClickListener(new View.OnClickListener() { //leitor de eventos no botão voltar <-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -47,15 +51,23 @@ public class LoginUser extends AppCompatActivity {
             }
         });
 
-        btnLoginUser.setOnClickListener(new View.OnClickListener() {
+        btnLoginUser.setOnClickListener(new View.OnClickListener() { //leitor de eventos no botão de login
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {   //função de click
                 if(checkAllFields()) {
-                    authLoginUser(loginEmail.getText().toString(), loginPassword.getText().toString());
+                    authLoginUser(loginEmail.getText().toString(), loginPassword.getText().toString()); //chama e passa os paremetros para a função de fazer login
                 }
             }
         });
 
+        btnForgoutUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ResetPassword.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
