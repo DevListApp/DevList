@@ -27,7 +27,7 @@
                 android:layout_height="50dp"
                 android:backgroundTint="@color/purple"
                 android:id="@+id/btnBackRegister"
-                android:drawableLeft="@drawable/baseline_arrow_back_white_24"
+                android:drawableLeft="@drawable/ic_arrow_back_white_24"
                 />
         </LinearLayout>
 
