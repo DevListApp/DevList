@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.devlist.app.auth.LoginUser;
 import com.devlist.app.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,7 +35,7 @@ import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity {
 
-    Button btnBackRegister, btnRegisterUser;
+    Button btnBackRegister, btnRegisterUser, btnViewLogin;
     EditText registerName, registerEmail, registerPassword, confirmPassword;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth userAuth = FirebaseAuth.getInstance();
@@ -47,6 +48,7 @@ public class RegisterUser extends AppCompatActivity {
 
         btnBackRegister = findViewById(R.id.btnBackRegister);
         btnRegisterUser = findViewById(R.id.btnRegisterUser);
+        btnViewLogin = findViewById(R.id.btnViewLogin);
         registerName = findViewById(R.id.registerName);
         registerEmail = findViewById(R.id.registerEmail);
         registerPassword = findViewById(R.id.registerPassword);
@@ -72,6 +74,14 @@ public class RegisterUser extends AppCompatActivity {
                     }
                 }
 
+            }
+        });
+        btnViewLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginUser.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

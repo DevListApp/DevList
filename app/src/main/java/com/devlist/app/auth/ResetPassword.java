@@ -3,6 +3,7 @@ package com.devlist.app.auth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPassword extends AppCompatActivity {
 
-    Button btnResetPasswor;
+    Button btnResetPasswor, btnBackFogout;
     EditText email;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -28,6 +29,7 @@ public class ResetPassword extends AppCompatActivity {
         setContentView(R.layout.activity_reset_password);
 
         btnResetPasswor = findViewById(R.id.btnResetPasswor);
+        btnBackFogout = findViewById(R.id.btnBackFogout);
         email = findViewById(R.id.email);
 
         btnResetPasswor.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +38,15 @@ public class ResetPassword extends AppCompatActivity {
                 if(checkAllFields()) {
                     ResetPassword(email.getText().toString().trim());
                 }
+            }
+        });
+
+        btnBackFogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginUser.class);
+                startActivity(intent);
+                finish();
             }
         });
 
