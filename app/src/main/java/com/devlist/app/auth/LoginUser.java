@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.devlist.app.MainActivity;
+import com.devlist.app.MainListActivity;
 import com.devlist.app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +36,13 @@ public class LoginUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user); //Carrega essa activity
+
+        FirebaseUser currentUser = authUser.getCurrentUser();
+        // Se o usuário estiver autenticado
+        if(currentUser != null) {
+            startActivity(new Intent(this, MainListActivity.class));
+            finish();
+        }
 
         btnBackLogin = findViewById(R.id.btnBackLogin);//atribuí as variáveis aos compoenntes
         btnLoginUser = findViewById(R.id.btnLoginUser);
@@ -87,25 +95,26 @@ public class LoginUser extends AppCompatActivity {
 
     public void authLoginUser(String email, String password){
         authUser.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = authUser.getCurrentUser();
-                            Toast.makeText(LoginUser.this, "Sucesso ao fazer login!.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginUser.this, "Erro ao fazer login, tente novamente!", Toast.LENGTH_SHORT).show();
-                            loginEmail.setText("");
-                            loginPassword.setText("");
-                            loginEmail.requestFocus();
-                        }
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success");
+                        FirebaseUser user = authUser.getCurrentUser();
+                        Toast.makeText(LoginUser.this, "Sucesso ao fazer login!.", Toast.LENGTH_SHORT).show();
+//                      Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                        Toast.makeText(LoginUser.this, "Erro ao fazer login, tente novamente!", Toast.LENGTH_SHORT).show();
+                        loginEmail.setText("");
+                        loginPassword.setText("");
+                        loginEmail.requestFocus();
                     }
-                });
+                }
+            });
     }
 }
