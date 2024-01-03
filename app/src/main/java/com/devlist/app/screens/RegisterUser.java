@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -125,7 +126,24 @@ public class RegisterUser extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser authCurrentUser = userAuth.getCurrentUser();
-                            createUser(user);
+
+                            //Adicionando nome ao usuário
+                            UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(user.getName())
+                                    .build();
+
+                            authCurrentUser.updateProfile(profileUpdate)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> profileUpdateTask) {
+                                            if (profileUpdateTask.isSuccessful()) {
+                                                Toast.makeText(RegisterUser.this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(RegisterUser.this, "Falha ao criar usuário.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+//                            createUser(user);
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             // Tratar o erro de senha fraca aqui
@@ -139,7 +157,7 @@ public class RegisterUser extends AppCompatActivity {
                                 Toast.makeText(RegisterUser.this, "Email já cadastrado!", Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                Toast.makeText(RegisterUser.this, "Falha na autenticação.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterUser.this, "Falha ao cadastrar usuário.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
