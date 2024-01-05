@@ -3,6 +3,7 @@
     <style name="Base.Theme.DevList" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <Item name="colorPrimary">@color/my_light_primary</Item> -->
+        <item name="android:statusBarColor">@color/purple</item>
     </style>
 
     <style name="Theme.DevList" parent="Base.Theme.DevList" />
