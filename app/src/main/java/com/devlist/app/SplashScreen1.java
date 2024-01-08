@@ -29,7 +29,7 @@ public class SplashScreen1 extends AppCompatActivity {
                 cont++;
                 splash_carregamento.setProgress(cont);
                 if (cont == 100) {
-                    startActivity(new Intent(SplashScreen1.this, LoginUser.class));
+                    startActivity(new Intent(SplashScreen1.this, SplashScreen2.class));
                     finish();
                     timer.cancel();
                 }
@@ -44,7 +44,7 @@ public class SplashScreen1 extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashScreen1.this, LoginUser.class));
+                startActivity(new Intent(SplashScreen1.this, SplashScreen2.class));
                 finish();
             }
         }, 3000);

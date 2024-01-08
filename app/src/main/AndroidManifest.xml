@@ -13,6 +13,12 @@
         android:theme="@style/Theme.DevList"
         tools:targetApi="31">
         <activity
+            android:name=".Bem_vindo"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen2"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen1"
             android:exported="true">
             <intent-filter>
@@ -35,7 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".auth.LoginUser"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>
