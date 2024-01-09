@@ -1,10 +1,11 @@
-package com.devlist.app;
+package com.devlist.app.screens.splash_screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.FragmentManager;
-import android.os.Bundle;
+
+import com.devlist.app.R;
 
 public class SplashScreen2 extends AppCompatActivity {
 

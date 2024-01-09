@@ -1,4 +1,4 @@
-package com.devlist.app;
+package com.devlist.app.screens.splash_screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
 import com.devlist.app.screens.user.RegisterUser;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;

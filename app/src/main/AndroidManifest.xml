@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DevList"
         tools:targetApi="31">
         <activity
-            android:name=".SplashScreen1"
+            android:name=".screens.splash_screens.SplashScreen1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +22,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Bem_vindo"
+            android:name=".screens.splash_screens.Bem_vindo"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen2"
+            android:name=".screens.splash_screens.SplashScreen2"
             android:exported="false" />
         <activity
             android:name=".screens.tasks.ListTasks"

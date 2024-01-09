@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bem_vindo_fundo"
-    tools:context=".Bem_vindo"
+    tools:context=".screens.splash_screens.Bem_vindo"
     android:orientation="vertical">
 
     <View

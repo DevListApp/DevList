@@ -1,12 +1,11 @@
-package com.devlist.app;
+package com.devlist.app.screens.splash_screens;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.devlist.app.auth.LoginUser;
+import com.devlist.app.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
