@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.devlist.app.auth.LoginUser;
-import com.devlist.app.screens.RegisterUser;
+import com.devlist.app.screens.user.RegisterUser;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.devlist.app.auth.LoginUser;
-import com.devlist.app.screens.RegisterUser;
+import com.devlist.app.screens.user.RegisterUser;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class Bem_vindo extends BottomSheetDialogFragment {

@@ -1,4 +1,4 @@
-package com.devlist.app.models;
+package com.devlist.app.data.models;
 
 public class User {
     private int id;

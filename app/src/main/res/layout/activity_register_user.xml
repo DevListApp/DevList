@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:fillViewport="true"
-    tools:context=".screens.RegisterUser">
+    tools:context=".screens.user.RegisterUser">
     <LinearLayout
         android:background="@color/purple"
         android:gravity="center"

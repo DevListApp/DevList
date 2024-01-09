@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.devlist.app.MainActivity;
-import com.devlist.app.MainListActivity;
+import com.devlist.app.screens.tasks.ListTasks;
 import com.devlist.app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -56,7 +55,7 @@ public class LoginUser extends AppCompatActivity {
         FirebaseUser currentUser = authUser.getCurrentUser();
         // Se o usuário estiver autenticado
         if(currentUser != null) {
-            startActivity(new Intent(this, MainListActivity.class));
+            startActivity(new Intent(this, ListTasks.class));
             finish();
         }
 
@@ -120,7 +119,7 @@ public class LoginUser extends AppCompatActivity {
                         FirebaseUser user = authUser.getCurrentUser();
                         Toast.makeText(LoginUser.this, "Sucesso ao fazer login!.", Toast.LENGTH_SHORT).show();
 //                      Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), ListTasks.class);
                         startActivity(intent);
                         finish();
                     } else {

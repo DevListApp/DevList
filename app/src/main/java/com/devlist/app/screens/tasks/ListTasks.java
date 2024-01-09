@@ -1,4 +1,4 @@
-package com.devlist.app;
+package com.devlist.app.screens.tasks;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainListActivity extends AppCompatActivity {
+public class ListTasks extends AppCompatActivity {
     Button btnBackSystem;
     TextView nameUser;
     private FirebaseAuth currentUser;

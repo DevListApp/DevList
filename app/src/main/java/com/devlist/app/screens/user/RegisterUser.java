@@ -1,4 +1,4 @@
-package com.devlist.app.screens;
+package com.devlist.app.screens.user;
 
 import static android.content.ContentValues.TAG;
 
@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.devlist.app.MainActivity;
 import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
-import com.devlist.app.models.User;
+import com.devlist.app.data.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -143,7 +143,6 @@ public class RegisterUser extends AppCompatActivity {
                                             }
                                         }
                                     });
-//                            createUser(user);
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             // Tratar o erro de senha fraca aqui
@@ -165,31 +164,31 @@ public class RegisterUser extends AppCompatActivity {
 
     }
 
-    public void createUser(User user) {
-        Map<String, String> name = new HashMap<>();
-        name.put("name", user.getName());
-        // Adiciona o usuário ao Firestore
-        db.collection("usuario")
-                .document(user.getName())
-                .set(name)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        try {
-                            Toast.makeText(RegisterUser.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "Documento adicionado com sucesso");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RegisterUser.this, "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show();
-                        Log.w(TAG, "Erro ao adicionar documento", e);
-                    }
-                });
-    }
+//    public void createUser(User user) {
+//        Map<String, String> name = new HashMap<>();
+//        name.put("name", user.getName());
+//        // Adiciona o usuário ao Firestore
+//        db.collection("usuario")
+//                .document(user.getName())
+//                .set(name)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        try {
+//                            Toast.makeText(RegisterUser.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+//                            Log.d(TAG, "Documento adicionado com sucesso");
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(RegisterUser.this, "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show();
+//                        Log.w(TAG, "Erro ao adicionar documento", e);
+//                    }
+//                });
+//    }
 
 }

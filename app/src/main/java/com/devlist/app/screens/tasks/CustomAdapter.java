@@ -1,4 +1,4 @@
-package com.devlist.app;
+package com.devlist.app.screens.tasks;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.devlist.app.R;
 
 import java.util.List;
 
