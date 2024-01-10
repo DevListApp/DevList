@@ -1,21 +1,26 @@
 package com.devlist.app.data.models;
 
 public class User {
-    private int id;
-    private String name;
-    private String email;
-    private String password;
-    private String confirmPassword;
+    // Atributos da classe representando os dados de um usuário
+    private int id; // Identificador único do usuário
+    private String name; // Nome do usuário
+    private String email; // Endereço de e-mail do usuário
+    private String password; // Senha do usuário
+    private String confirmPassword; // Confirmação de senha (usado geralmente em processos de registro)
 
-    public User(){
+    // Construtor vazio (default) da classe
+    public User() {
     }
 
+    // Construtor com parâmetros para inicializar os atributos ao criar uma instância
     public User(String name, String email, String password, String confirmPassword) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.confirmPassword = confirmPassword;
     }
+
+    // Métodos getter e setter para acessar e modificar os atributos do usuário
 
     public int getId() {
         return id;
@@ -56,5 +61,4 @@ public class User {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
-
 }

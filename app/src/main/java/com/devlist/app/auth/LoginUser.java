@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.devlist.app.MainActivity;
+import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.devlist.app.screens.tasks.ListTasks;
 import com.devlist.app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -68,7 +68,7 @@ public class LoginUser extends AppCompatActivity {
         btnBackLogin.setOnClickListener(new View.OnClickListener() { //leitor de eventos no botão voltar <-
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
                 startActivity(intent);
                 finish();
             }

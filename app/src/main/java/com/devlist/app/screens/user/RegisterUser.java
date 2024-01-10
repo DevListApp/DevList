@@ -14,13 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.devlist.app.MainActivity;
 import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
 import com.devlist.app.data.models.User;
+import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,9 +28,6 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterUser extends AppCompatActivity {
 
@@ -59,7 +54,7 @@ public class RegisterUser extends AppCompatActivity {
         btnBackRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
                 startActivity(intent);
             }
         });
