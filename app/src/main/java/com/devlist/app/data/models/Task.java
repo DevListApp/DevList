@@ -2,7 +2,7 @@ package com.devlist.app.data.models;
 
 import java.util.Date;
 
-public class Tasks {
+public class Task {
     // Atributos da classe representando os dados de uma tarefa
     String title; // Título da tarefa
     String note; // Nota ou descrição da tarefa
@@ -11,7 +11,7 @@ public class Tasks {
     Integer status; // Status da tarefa (pode ser um código ou enumeração)
 
     // Construtor da classe para inicializar os atributos ao criar uma instância
-    public Tasks(String title, String note, Date dt_start_scheduled, Date dt_end_scheduled, Integer status) {
+    public Task(String title, String note, Date dt_start_scheduled, Date dt_end_scheduled, Integer status) {
         this.title = title;
         this.note = note;
         this.dt_start_scheduled = dt_start_scheduled;
