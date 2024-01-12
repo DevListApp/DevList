@@ -59,7 +59,7 @@ public class activity_criar_tarefa extends AppCompatActivity {
 
         // LOG PARA TESTAR OS DADOS ENVIADOS
         Log.d("DEBUG", "Titulo: " + titulo);
-        Log.d("DEBUG", "Notas: " + notas);
+        Log.d("DEBUG", " Notas: " + notas);
         Log.d("DEBUG", "Hora Inicio: " + horaInicio);
         Log.d("DEBUG", "Hora Fim: " + horaFim);
 

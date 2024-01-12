@@ -9,10 +9,6 @@ public class Tarefas {
     private Date horaFim;
     private int prioridade;
 
-    public Tarefas() {
-        // Construtor vazio necessário para Firebase
-    }
-
     public Tarefas(String titulo, String notas, Date horaInicio, Date horaFim, int prioridade) {
         this.titulo = titulo;
         this.notas = notas;
