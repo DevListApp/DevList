@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.devlist.app.screens.dashboard.Dashboard;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.devlist.app.screens.tasks.ListTasks;
 import com.devlist.app.R;
@@ -55,7 +56,7 @@ public class LoginUser extends AppCompatActivity {
         FirebaseUser currentUser = authUser.getCurrentUser();
         // Se o usuário estiver autenticado
         if(currentUser != null) {
-            startActivity(new Intent(this, ListTasks.class));
+            startActivity(new Intent(this, Dashboard.class));
             finish();
         }
 
@@ -119,7 +120,7 @@ public class LoginUser extends AppCompatActivity {
                         FirebaseUser user = authUser.getCurrentUser();
                         Toast.makeText(LoginUser.this, "Sucesso ao fazer login!.", Toast.LENGTH_SHORT).show();
 //                      Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        Intent intent = new Intent(getApplicationContext(), ListTasks.class);
+                        Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                         startActivity(intent);
                         finish();
                     } else {

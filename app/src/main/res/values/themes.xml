@@ -7,4 +7,10 @@
     </style>
 
     <style name="Theme.DevList" parent="Base.Theme.DevList" />
+
+    <style name="NoAnimationBottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">?android:attr/windowBackground</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
+    </style>
+
 </resources>

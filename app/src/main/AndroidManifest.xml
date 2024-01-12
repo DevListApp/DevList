@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DevList"
         tools:targetApi="31">
         <activity
-            android:name=".screens.tasks.Dashboard"
+            android:name=".screens.dashboard.Dashboard"
             android:exported="false" />
         <activity
             android:name=".screens.splash_screens.SplashScreen1"

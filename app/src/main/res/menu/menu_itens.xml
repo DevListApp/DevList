@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:icon="@drawable/icon_home"
+        android:title="" />
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:icon="@drawable/icons_list"
+        android:title="" />
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/icon_add"
+        android:title=""
+        />
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/icon_notification"
+        android:title=""
+        />
+    <item
+        android:id="@+id/page_5"
+        android:enabled="true"
+        android:icon="@drawable/icon_user"
+        android:title=""
+        />
+</menu>
