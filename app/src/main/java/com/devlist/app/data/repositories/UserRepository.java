@@ -1,30 +1,29 @@
 package com.devlist.app.data.repositories;
 
-import com.devlist.app.data.models.Task;
+import com.devlist.app.data.models.User;
 
 import java.util.List;
 
-public class TaskRepository {
-    public List<Task> getAllTasks() {
-        // Lógica para buscar todas as tarefas do Firebase
+public class UserRepository {
+    public List<User> getAllUsers() {
+        // Lógica para buscar todos os usuários do Firebase
         return null;
     }
 
-    public Task getTaskById(String taskId) {
+    public User getUserByUid(String userUid) {
         // Lógica para buscar uma tarefa específica do Firebase pelo ID
         return null;
     }
 
-    public void createTask(Task task) {
+    public void createUser(User user) {
         // Lógica para criar uma nova tarefa no Firebase
     }
 
-    public void updateTask(Task task) {
+    public void updateUser(User user) {
         // Lógica para atualizar uma tarefa existente no Firebase
     }
 
-    public void deleteTask(String taskId) {
+    public void deleteUser(String userUid) {
         // Lógica para excluir uma tarefa do Firebase pelo ID
     }
-
 }

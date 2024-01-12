@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray2"
-    tools:context=".screens.tasks.Dashboard">
+    tools:context=".screens.dashboard.Dashboard">
 
     <LinearLayout
+        android:id="@+id/topLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/dashboard_navbar_fundo"
-        android:paddingTop="20dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"
-                android:background="@drawable/user_profile_gradient"
-            />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/user_profile_gradient"
+            android:src="@drawable/ic_launcher_foreground" />
+
         <Space
             android:layout_width="10dp"
-            android:layout_height="50dp"/>
-
-
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,28 +34,42 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Bem - vindo (a)!"
-                android:textSize="20sp"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"
+                android:text="Bem - vindo (a)!"
                 android:textColor="@color/purple"
-                />
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Usuário teste"
                 android:textColor="@color/purple"
-                android:textSize="20sp"/>
-
+                android:textSize="20sp" />
         </LinearLayout>
-
-
-
-        
-
     </LinearLayout>
 
-</LinearLayout>
+<!--    documentação: https://m2.material.io/components/bottom-navigation/android#using-bottom-navigation-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_fundo">
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menu_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:menu="@menu/menu_itens"
+            app:itemIconSize="25dp"
+            android:animationCache="false"/>
+
+
+    </LinearLayout>
+</RelativeLayout>

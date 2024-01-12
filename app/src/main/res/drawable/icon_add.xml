@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="80dp"
+    android:height="80dp"
+    android:viewportWidth="80"
+    android:viewportHeight="80">
+
+    <!-- Primeiro grupo para o círculo -->
+    <group>
+        <path
+            android:fillColor="@color/green"
+            android:pathData="M40 0A40 40 0 1 0 40 80 40 40 0 1 0 40 0z"/>
+    </group>
+
+    <!-- Segundo grupo para o ícone dentro do círculo -->
+    <group
+        android:translateX="22"
+        android:translateY="22">
+        <vector
+            android:width="36dp"
+            android:height="36dp"
+            android:viewportWidth="36"
+            android:viewportHeight="36">
+            <group>
+                <path
+                    android:fillColor="#FF130139"
+                    android:pathData="M15 20.5h-13v-4.5h13v-13h4.5v13h13v4.5h-13v13h-4.5v-13Z"/>
+            </group>
+        </vector>
+    </group>
+</vector>
