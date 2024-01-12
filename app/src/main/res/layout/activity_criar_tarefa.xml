@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:background="@color/purple"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- TITULO NOVA TAREFA -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/purple"
+                android:id="@+id/btnBackAddTask"
+                android:drawableLeft="@drawable/ic_arrow_back_white_24"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nova Tarefa"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <!-- TITULO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Título"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- TITULO INPUT -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:cardCornerRadius="12dp"
+                android:layout_marginTop="5dp"
+                app:cardElevation="20dp">
+                <EditText
+                    android:id="@+id/taskTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Digite o título"
+                    android:textColorHint="@color/gray"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:paddingStart="15dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- NOTAS / DESCRICAO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notas/Descrição"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- NOTAS INPUT -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="12dp"
+                android:layout_marginTop="5dp"
+                app:cardElevation="20dp">
+                <EditText
+                    android:id="@+id/taskNotas"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Digite suas notas/descrição"
+                    android:textColorHint="@color/gray"
+                    android:background="@color/white"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:paddingStart="15dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- DEFINIR PRAZO TITULO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Definir prazo"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- HORARIO INICIO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <!-- INICIO HORA TEXTO -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Início:"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"/>
+
+                <!-- INICIO HORA INPUT -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="20dp">
+                    <EditText
+                        android:id="@+id/taskIniHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="hh:mm"
+                        android:textColorHint="@color/gray"
+                        android:background="@color/white"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:paddingStart="15dp"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- TERMINO HORARIO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- FIM HORA TEXTO -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Término:"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <!-- FIM HORA INPUT -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="20dp"
+                    android:layout_marginTop="20px"
+                    android:layout_border="10px">
+                    <EditText
+                        android:id="@+id/taskFimHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="hh:mm"
+                        android:textColorHint="@color/gray"
+                        android:background="@color/white"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:paddingStart="15dp"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- PRIORIDADE TITULO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prioridade"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- PRIORIDADE (ESCOLHER A OPCAO) -->
+            <RadioGroup
+                android:id="@+id/taskPrioridade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <!-- PRIORIDADE ALTA-->
+                <RadioButton
+                    android:id="@+id/taskAltaPrioridade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alta"
+                    android:textColor="@color/white"/>
+                <!-- PRIORIDADE MEDIA -->
+                <RadioButton
+                    android:id="@+id/taskMediaPrioridade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Média"
+                    android:textColor="@color/white"/>
+                <!-- PRIORIDADE BAIXA-->
+                <RadioButton
+                    android:id="@+id/taskBaixaPrioridade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Baixa"
+                    android:textColor="@color/white"/>
+            </RadioGroup>
+
+            <!--- BOTÃO ADICIONAR TAREFA -->
+            <Button
+                android:id="@+id/btnAddTarefa"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:backgroundTint="@color/orange"
+                android:text="Adicionar"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:cornerRadius="12dp"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
