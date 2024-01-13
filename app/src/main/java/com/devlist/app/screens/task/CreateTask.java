@@ -1,4 +1,4 @@
-package com.devlist.app;
+package com.devlist.app.screens.task;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,20 +10,22 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import com.devlist.app.R;
+import com.devlist.app.data.models.Task;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import java.util.Date;
 
-public class activity_criar_tarefa extends AppCompatActivity {
+public class CreateTask extends AppCompatActivity {
 
     private EditText edtTituloTarefa, edtNotasTarefa, edtHoraInicio, edtHoraFim;
     private RadioGroup radioGroupPrioridade; // PRIORIDADE B/M/A
     private Button btnAdicionarTarefa; // BOTAO ADICIONA TAREFA
 
-    private DatabaseReference databaseReference;
+    private FirebaseFirestore databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class activity_criar_tarefa extends AppCompatActivity {
         btnAdicionarTarefa = findViewById(R.id.btnAddTarefa);
 
         // DATABASE FIREBASE
-        databaseReference = FirebaseDatabase.getInstance().getReference("tarefas");
+        databaseReference = FirebaseFirestore.getInstance();
 
         // EVENTO DE CLIQUE PARA ADICIONAR A TAREFA
         btnAdicionarTarefa.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +80,7 @@ public class activity_criar_tarefa extends AppCompatActivity {
 
 
         // CHAMANDO INSTANCIA DA CLASSE TAREFAS
-        Tarefas tarefa = new Tarefas(
+        Task tarefa = new Task(
                 titulo,
                 notas,
                 new Date(),
@@ -87,17 +89,19 @@ public class activity_criar_tarefa extends AppCompatActivity {
         );
 
         // AO CLICAR, ENVIA OS DADOS PARA PODER SALVAR NO BANCO
-        databaseReference.push().setValue(tarefa)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.collection("tasks").add(tarefa)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(activity_criar_tarefa.this, "Tarefa adicionada com sucesso", Toast.LENGTH_SHORT).show(); // ALERT
-                            finish(); // FECHA A ATIVIDADE APOS ADICIONAR A TAREFA
-                        } else {
-                            Toast.makeText(activity_criar_tarefa.this, "Erro ao adicionar a tarefa: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.e("TAG", "Erro ao adicionar a tarefa", task.getException()); // LOG ERRO
-                        }
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(CreateTask.this, "Tarefa adicionada com sucesso", Toast.LENGTH_SHORT).show(); // ALERT
+                        finish(); // FECHA A ATIVIDADE APOS ADICIONAR A TAREFA
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(CreateTask.this, "Erro ao adicionar a tarefa: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("TAG", "Erro ao adicionar a tarefa"+ e.getMessage()); // LOG ERRO
                     }
                 });
 
