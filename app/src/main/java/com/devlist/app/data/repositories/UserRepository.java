@@ -2,12 +2,14 @@ package com.devlist.app.data.repositories;
 
 import com.devlist.app.data.models.User;
 import com.devlist.app.data.sources.UserFirebaseDataSource;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
 public class UserRepository {
 
     private UserFirebaseDataSource userFirebaseDataSource;
+    private User user;
 
     public UserRepository() {
         userFirebaseDataSource = new UserFirebaseDataSource();
@@ -23,10 +25,12 @@ public class UserRepository {
         return null;
     }
 
-    public User getUser(){
-        User user = new User(userFirebaseDataSource.getUserAuthenticator());
-        return user;
+    public User getUser() {
+        FirebaseUser userFirebase = userFirebaseDataSource.getUserAuthenticator();
+        User currentUser = new User(userFirebase);
+        return currentUser;
     }
+
 
 
     public void createUser(List<String> user, UserFirebaseDataSource.UserCreationListener listener) {

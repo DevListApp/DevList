@@ -9,6 +9,8 @@ public class Task {
     private Date horaFim;
     private int prioridade;
 
+    public Task(){
+    }
     public Task(String titulo, String notas, Date horaInicio, Date horaFim, int prioridade) {
         this.titulo = titulo;
         this.notas = notas;

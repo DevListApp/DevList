@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray2"
+    android:orientation="vertical"
     tools:context=".screens.dashboard.Dashboard">
 
     <LinearLayout
@@ -45,31 +46,57 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Usuário teste"
                 android:textColor="@color/purple"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
-
-<!--    documentação: https://m2.material.io/components/bottom-navigation/android#using-bottom-navigation-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/menu_fundo">
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/menu_bottom"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/purple"
+            android:padding="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Tarefas"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewDashboard"
+            android:paddingHorizontal="30dp"
+            android:background="@color/gray2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:menu="@menu/menu_itens"
-            app:itemIconSize="25dp"
-            android:animationCache="false"/>
-
+            android:layout_height="match_parent" />
 
     </LinearLayout>
-</RelativeLayout>
+
+<!--    documentação: https://m2.material.io/components/bottom-navigation/android#using-bottom-navigation-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/menu_fundo">
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/menu_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:menu="@menu/menu_itens"
+                app:itemIconSize="28dp"
+                android:animationCache="false"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

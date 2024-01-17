@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/purple"
     android:orientation="vertical"
-    tools:context=".screens.tasks.ListTasks">
+    tools:context=".screens.home.Home">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +51,6 @@
                 android:layout_width="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:text="Usuário Teste"
                 android:layout_height="30dp">
 
             </TextView>
