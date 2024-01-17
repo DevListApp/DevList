@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
 import com.devlist.app.data.models.User;
+import com.devlist.app.data.repositories.UserRepository;
+import com.devlist.app.data.sources.UserFirebaseDataSource;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,8 +32,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class RegisterUser extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class RegisterUser extends AppCompatActivity {
     Button btnBackRegister, btnRegisterUser, btnViewLogin;
     EditText registerName, registerEmail, registerPassword, confirmPassword;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -41,6 +46,9 @@ public class RegisterUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
+
+        final ViewModelUser viewModelUser = new ViewModelProvider(this).get(ViewModelUser.class);
+
 
         btnBackRegister = findViewById(R.id.btnBackRegister);
         btnRegisterUser = findViewById(R.id.btnRegisterUser);
@@ -64,9 +72,24 @@ public class RegisterUser extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkPassword()) {
                     if(checkAllFields()) {
-                        User user = new User(registerName.getText().toString(), registerEmail.getText().toString(),
-                                registerPassword.getText().toString(), confirmPassword.getText().toString());
-                        createUserAuth(user);
+                        List<String> user = new ArrayList<>();
+                        user.add(registerName.getText().toString());
+                        user.add(registerEmail.getText().toString());
+                        user.add(registerPassword.getText().toString());
+                        user.add(confirmPassword.getText().toString());
+                        viewModelUser.creatUser(user , new UserFirebaseDataSource.UserCreationListener(){
+                            @Override
+                            public void onSuccess() {
+                                // Atualize a UI de sucesso
+                                Toast.makeText(RegisterUser.this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(String errorMessage) {
+                                // Trate a falha e atualize a UI de acordo
+                                Toast.makeText(RegisterUser.this, errorMessage, Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 }
 
@@ -113,77 +136,5 @@ public class RegisterUser extends AppCompatActivity {
         }
     }
 
-    public void createUserAuth(User user) {
-        userAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser authCurrentUser = userAuth.getCurrentUser();
-
-                            //Adicionando nome ao usuário
-                            UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(user.getName())
-                                    .build();
-
-                            authCurrentUser.updateProfile(profileUpdate)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> profileUpdateTask) {
-                                            if (profileUpdateTask.isSuccessful()) {
-                                                Toast.makeText(RegisterUser.this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                Toast.makeText(RegisterUser.this, "Falha ao criar usuário.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-                        } else {
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            // Tratar o erro de senha fraca aqui
-                            if (task.getException() instanceof FirebaseAuthWeakPasswordException) {
-                                Toast.makeText(RegisterUser.this, "Senha fraca. A senha deve ter pelo menos 6 caracteres.", Toast.LENGTH_SHORT).show();
-
-                            } else if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                Toast.makeText(RegisterUser.this, "Insira um email válido", Toast.LENGTH_SHORT).show();
-
-                            } else if (task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Toast.makeText(RegisterUser.this, "Email já cadastrado!", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(RegisterUser.this, "Falha ao cadastrar usuário.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                });
-
-    }
-
-//    public void createUser(User user) {
-//        Map<String, String> name = new HashMap<>();
-//        name.put("name", user.getName());
-//        // Adiciona o usuário ao Firestore
-//        db.collection("usuario")
-//                .document(user.getName())
-//                .set(name)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        try {
-//                            Toast.makeText(RegisterUser.this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-//                            Log.d(TAG, "Documento adicionado com sucesso");
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(RegisterUser.this, "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show();
-//                        Log.w(TAG, "Erro ao adicionar documento", e);
-//                    }
-//                });
-//    }
 
 }

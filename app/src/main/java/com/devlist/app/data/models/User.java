@@ -1,8 +1,10 @@
 package com.devlist.app.data.models;
 
+import com.google.firebase.auth.FirebaseUser;
+
 public class User {
     // Atributos da classe representando os dados de um usuário
-    private int id; // Identificador único do usuário
+    private String uid; // Identificador único do usuário
     private String name; // Nome do usuário
     private String email; // Endereço de e-mail do usuário
     private String password; // Senha do usuário
@@ -13,21 +15,17 @@ public class User {
     }
 
     // Construtor com parâmetros para inicializar os atributos ao criar uma instância
-    public User(String name, String email, String password, String confirmPassword) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.confirmPassword = confirmPassword;
+    public User(FirebaseUser firebaseUser) {
+        this.uid = firebaseUser.getUid();
+        this.email = firebaseUser.getEmail();
+        this.name = firebaseUser.getDisplayName();
+        // Outras inicializações se necessário
     }
 
     // Métodos getter e setter para acessar e modificar os atributos do usuário
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public String getId() {
+        return uid;
     }
 
     public String getName() {

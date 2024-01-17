@@ -1,10 +1,18 @@
 package com.devlist.app.data.repositories;
 
 import com.devlist.app.data.models.User;
+import com.devlist.app.data.sources.UserFirebaseDataSource;
 
 import java.util.List;
 
 public class UserRepository {
+
+    private UserFirebaseDataSource userFirebaseDataSource;
+
+    public UserRepository() {
+        userFirebaseDataSource = new UserFirebaseDataSource();
+    }
+
     public List<User> getAllUsers() {
         // Lógica para buscar todos os usuários do Firebase
         return null;
@@ -15,8 +23,24 @@ public class UserRepository {
         return null;
     }
 
-    public void createUser(User user) {
-        // Lógica para criar uma nova tarefa no Firebase
+    public User getUser(){
+        User user = new User(userFirebaseDataSource.getUserAuthenticator());
+        return user;
+    }
+
+
+    public void createUser(List<String> user, UserFirebaseDataSource.UserCreationListener listener) {
+        userFirebaseDataSource.createUserAuth(user, new UserFirebaseDataSource.UserCreationListener() {
+            @Override
+            public void onSuccess() {
+                listener.onSuccess();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                listener.onFailure(errorMessage);
+            }
+        });
     }
 
     public void updateUser(User user) {

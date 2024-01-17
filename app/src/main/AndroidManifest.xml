@@ -13,9 +13,6 @@
         android:theme="@style/Theme.DevList"
         tools:targetApi="31">
         <activity
-            android:name=".screens.dashboard.Dashboard"
-            android:exported="false" />
-        <activity
             android:name=".screens.splash_screens.SplashScreen1"
             android:exported="true">
             <intent-filter>
@@ -25,13 +22,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".screens.dashboard.Dashboard"
+            android:exported="false" />
+        <activity
             android:name=".screens.splash_screens.Bem_vindo"
             android:exported="false" />
         <activity
             android:name=".screens.splash_screens.SplashScreen2"
             android:exported="false" />
         <activity
-            android:name=".screens.tasks.ListTasks"
+            android:name=".screens.dashboard.Home"
             android:exported="false" />
         <activity
             android:name=".auth.ResetPassword"
@@ -41,6 +41,8 @@
             android:exported="false" />
         <activity
             android:name=".auth.LoginUser"
+            android:exported="false" />
+        <activity android:name=".screens.task.CreateTask"
             android:exported="false" />
     </application>
 
