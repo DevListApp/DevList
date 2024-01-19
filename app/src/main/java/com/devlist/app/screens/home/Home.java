@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
 import com.devlist.app.screens.dashboard.TaskAdapter;
-import com.devlist.app.screens.home.HomeViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;

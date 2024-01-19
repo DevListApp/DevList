@@ -18,6 +18,9 @@ import com.devlist.app.R;
 import com.devlist.app.data.models.Task;
 import com.devlist.app.screens.task.CreateTask;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -30,6 +33,7 @@ public class Dashboard extends AppCompatActivity {
     private List<Task> taskList;
     private  TaskAdapter taskAdapter;
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth userAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +58,17 @@ public class Dashboard extends AppCompatActivity {
         recyclerView.setAdapter(taskAdapter);
 
         // Inicializar o Firestore
+        userAuth = FirebaseAuth.getInstance();
+
         firebaseFirestore = FirebaseFirestore.getInstance();
 
+        FirebaseUser user  = userAuth.getCurrentUser();
+        String userId = user.getUid();
+
         // Obter dados da coleção "task"
-        Query query = firebaseFirestore.collection("tasks");
+        CollectionReference storiesCollection = firebaseFirestore.collection("tasks");
+        // Query de consulta no banco de dados
+        Query query =  storiesCollection.whereEqualTo("auth", userId);
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 taskList.clear(); // Limpar a lista atual

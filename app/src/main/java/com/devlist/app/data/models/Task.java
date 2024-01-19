@@ -8,17 +8,26 @@ public class Task {
     private Date horaInicio;
     private Date horaFim;
     private int prioridade;
+    private String auth;
 
-    public Task(){
-    }
-    public Task(String titulo, String notas, Date horaInicio, Date horaFim, int prioridade) {
+    public Task(String titulo, String notas, Date horaInicio, Date horaFim, int prioridade, String authId) {
         this.titulo = titulo;
         this.notas = notas;
         this.horaInicio = horaInicio;
         this.horaFim = horaFim;
         this.prioridade = prioridade;
+        this.auth = authId;
+    }
+    public Task(){
     }
 
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
+    }
     public String getTitulo() {
         return titulo;
     }

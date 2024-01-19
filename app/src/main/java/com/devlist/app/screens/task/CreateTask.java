@@ -1,5 +1,6 @@
 package com.devlist.app.screens.task;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +12,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.devlist.app.R;
+import com.devlist.app.screens.dashboard.Dashboard;
 import com.devlist.app.data.models.Task;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,9 +27,9 @@ public class CreateTask extends AppCompatActivity {
 
     private EditText edtTituloTarefa, edtNotasTarefa, edtHoraInicio, edtHoraFim;
     private RadioGroup radioGroupPrioridade; // PRIORIDADE B/M/A
-    private Button btnAdicionarTarefa; // BOTAO ADICIONA TAREFA
-
+    private Button btnAdicionarTarefa, btnBackAddTask; // BOTAO ADICIONA TAREFA
     private FirebaseFirestore databaseReference;
+    private FirebaseAuth myAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class CreateTask extends AppCompatActivity {
         edtHoraFim = findViewById(R.id.taskFimHora);
         radioGroupPrioridade = findViewById(R.id.taskPrioridade);
         btnAdicionarTarefa = findViewById(R.id.btnAddTarefa);
+        btnBackAddTask = findViewById(R.id.btnBackAddTask);
 
         // DATABASE FIREBASE
         databaseReference = FirebaseFirestore.getInstance();
@@ -50,6 +55,14 @@ public class CreateTask extends AppCompatActivity {
                 adicionarTarefa();
             }
         });
+        btnBackAddTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void adicionarTarefa() {
@@ -58,6 +71,7 @@ public class CreateTask extends AppCompatActivity {
         String notas = edtNotasTarefa.getText().toString().trim();
         String horaInicio = edtHoraInicio.getText().toString().trim();
         String horaFim = edtHoraFim.getText().toString().trim();
+
 
         // LOG PARA TESTAR OS DADOS ENVIADOS
         Log.d("DEBUG", "Titulo: " + titulo);
@@ -78,6 +92,10 @@ public class CreateTask extends AppCompatActivity {
         // LOG TESTAR
         Log.d("DEBUG", "Prioridade Selecionada: " + prioridadeSelecionada.getText().toString());
 
+        // PEGANDO O UID DO USUÁRIO
+        myAuth = FirebaseAuth.getInstance();
+        FirebaseUser user  = myAuth.getCurrentUser();
+        String userId = user.getUid();
 
         // CHAMANDO INSTANCIA DA CLASSE TAREFAS
         Task tarefa = new Task(
@@ -85,7 +103,8 @@ public class CreateTask extends AppCompatActivity {
                 notas,
                 new Date(),
                 new Date(),
-                getCodigoPrioridade(prioridadeSelecionada.getText().toString())
+                getCodigoPrioridade(prioridadeSelecionada.getText().toString()),
+                userId
         );
 
         // AO CLICAR, ENVIA OS DADOS PARA PODER SALVAR NO BANCO
@@ -94,6 +113,8 @@ public class CreateTask extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Toast.makeText(CreateTask.this, "Tarefa adicionada com sucesso", Toast.LENGTH_SHORT).show(); // ALERT
+                        Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+                        startActivity(intent);
                         finish(); // FECHA A ATIVIDADE APOS ADICIONAR A TAREFA
                     }
                 })
