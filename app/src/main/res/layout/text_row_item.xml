@@ -28,7 +28,9 @@
                    <CheckBox
                        android:layout_width="wrap_content"
                        android:layout_height="30dp"
-                       android:id="@+id/checkbox"
+                       android:id="@+id/checkTask"
+                       android:checked="true"
+                       android:backgroundTint="@color/green"
                        >
                    </CheckBox>
             </LinearLayout>
@@ -77,12 +79,11 @@
                     app:cardElevation="0dp"
                     tools:ignore="MissingConstraints">
                     <ImageView
+                        android:id="@+id/statusTask"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@color/green"
-                        android:background="@color/white"
+                        android:background="@color/green"
                         >
-
                     </ImageView>
 
                 </androidx.cardview.widget.CardView>

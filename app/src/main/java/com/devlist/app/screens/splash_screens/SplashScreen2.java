@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.FragmentManager;
 
 import com.devlist.app.R;
-import com.devlist.app.screens.splash_screens.Bem_vindo;
 
 public class SplashScreen2 extends AppCompatActivity {
 

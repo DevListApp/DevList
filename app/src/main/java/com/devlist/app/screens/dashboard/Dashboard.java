@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.devlist.app.R;
+import com.devlist.app.auth.LoginUser;
 import com.devlist.app.data.models.Task;
 import com.devlist.app.screens.task.CreateTask;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -77,8 +79,7 @@ public class Dashboard extends AppCompatActivity {
                 }
                 taskAdapter.notifyDataSetChanged(); // Notificar o RecyclerView sobre as mudanças nos dados
             } else {
-                Log.d(TAG, "Deu merda aqui!");
-                // Tratar erro ao obter dados
+                Toast.makeText(this, "Erro ao carregar tarefas!", Toast.LENGTH_SHORT).show();
             }
         });
 

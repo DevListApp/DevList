@@ -34,11 +34,11 @@ public class TaskViewModel extends ViewModel {
     }
 
     // Método para atualizar o título de uma tarefa
-    public void updateTaskTitle(Task task, String newTitle) {
+    /*public void updateTaskTitle(Task task, String newTitle) {
         task.setTitulo(newTitle);
         taskRepository.updateTask(task);
 
         // Atualiza a lista de tarefas após a modificação
         loadTasks();
-    }
+    }*/
 }

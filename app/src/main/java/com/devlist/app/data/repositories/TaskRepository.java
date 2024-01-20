@@ -1,10 +1,19 @@
 package com.devlist.app.data.repositories;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.util.Log;
+
 import com.devlist.app.data.models.Task;
+import com.devlist.app.data.sources.TaskFirebaseDataSource;
 
 import java.util.List;
 
 public class TaskRepository {
+    private TaskFirebaseDataSource taskFirebaseDataSource;
+    public TaskRepository(){
+        taskFirebaseDataSource = new TaskFirebaseDataSource();
+    }
     public List<Task> getAllTasks() {
         // Lógica para buscar todas as tarefas do Firebase
         return null;
@@ -15,12 +24,33 @@ public class TaskRepository {
         return null;
     }
 
-    public void createTask(Task task) {
-        // Lógica para criar uma nova tarefa no Firebase
+    public void createTask(Task task, TaskFirebaseDataSource.TaskListener listener) {
+        taskFirebaseDataSource.createTask(task, new TaskFirebaseDataSource.TaskListener() {
+            @Override
+            public void onSuccess() {
+                listener.onSuccess();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                listener.onFailure(errorMessage);
+            }
+        });
     }
 
-    public void updateTask(Task task) {
-        // Lógica para atualizar uma tarefa existente no Firebase
+    public void setFinishTask(Task task, TaskFirebaseDataSource.TaskListener listener) {
+        taskFirebaseDataSource.setFinishTask(task, new TaskFirebaseDataSource.TaskListener() {
+            @Override
+            public void onSuccess() {
+                listener.onSuccess();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                listener.onFailure(errorMessage);
+            }
+        });
+
     }
 
     public void deleteTask(String taskId) {

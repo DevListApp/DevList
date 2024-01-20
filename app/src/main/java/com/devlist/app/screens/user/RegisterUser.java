@@ -14,8 +14,8 @@ import android.widget.Toast;
 
 import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
-import com.devlist.app.data.sources.UserFirebaseDataSource;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
+import com.devlist.app.data.sources.UserFirebaseDataSource;
 
 import java.util.ArrayList;
 import java.util.List;

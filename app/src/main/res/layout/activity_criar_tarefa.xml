@@ -141,7 +141,7 @@
                         android:id="@+id/taskIniHora"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="hh:mm"
+                        android:hint="Data inicial"
                         android:textColorHint="@color/gray"
                         android:background="@color/white"
                         android:padding="8dp"
@@ -179,13 +179,14 @@
                         android:id="@+id/taskFimHora"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="hh:mm"
+                        android:hint="Data final"
                         android:textColorHint="@color/gray"
                         android:background="@color/white"
                         android:padding="8dp"
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:paddingStart="15dp"/>
+
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
