@@ -8,18 +8,19 @@
 
     <LinearLayout
         android:background="@color/purple"
-        android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <!-- TITULO NOVA TAREFA -->
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:backgroundTint="@color/purple"
                 android:id="@+id/btnBackAddTask"
@@ -87,14 +88,15 @@
             <!-- NOTAS INPUT -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="170dp"
                 app:cardCornerRadius="12dp"
+                android:backgroundTint="@color/white"
                 android:layout_marginTop="5dp"
                 app:cardElevation="20dp">
                 <EditText
                     android:id="@+id/taskNotas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Digite suas notas/descrição"
                     android:textColorHint="@color/gray"
                     android:background="@color/white"
@@ -229,20 +231,44 @@
                     android:text="Baixa"
                     android:textColor="@color/white"/>
             </RadioGroup>
-
-            <!--- BOTÃO ADICIONAR TAREFA -->
-            <Button
-                android:id="@+id/btnAddTarefa"
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_gravity="right"
-                android:backgroundTint="@color/orange"
-                android:text="Adicionar"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                app:cornerRadius="12dp"
-                android:layout_marginTop="20dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    >
+                    <Button
+                        android:id="@+id/btnAddTarefa"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/orange"
+                        android:text="Adicionar"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:cornerRadius="30dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    >
+                    <ProgressBar
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:indeterminateTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:id="@+id/splash_create_task"/>
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

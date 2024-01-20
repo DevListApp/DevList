@@ -221,7 +221,7 @@
                 android:textColor="@color/white"
                 android:drawableRight="@drawable/ic_arrow_end_24"
                 android:textSize="18sp"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="30dp" />
 
 
         </LinearLayout>

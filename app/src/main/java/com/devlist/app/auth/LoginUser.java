@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.devlist.app.screens.dashboard.Dashboard;
@@ -34,6 +35,7 @@ public class LoginUser extends AppCompatActivity {
     Button btnLoginUser;
     Button btnForgoutUser;
     FirebaseAuth authUser = FirebaseAuth.getInstance(); //instacia auth do firebase
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +51,6 @@ public class LoginUser extends AppCompatActivity {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
-
-
-
         FirebaseUser currentUser = authUser.getCurrentUser();
         // Se o usuário estiver autenticado
         if(currentUser != null) {
@@ -64,6 +63,7 @@ public class LoginUser extends AppCompatActivity {
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
         btnForgoutUser = findViewById(R.id.btnForgoutUser);
+        progressBar = findViewById(R.id.splash_login);
 
         btnBackLogin.setOnClickListener(new View.OnClickListener() { //leitor de eventos no botão voltar <-
             @Override
@@ -78,6 +78,9 @@ public class LoginUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {   //função de click
                 if(checkAllFields()) {
+                    btnLoginUser.setEnabled(false);
+                    btnLoginUser.setText("");
+                    progressBar.setVisibility(View.VISIBLE);
                     authLoginUser(loginEmail.getText().toString(), loginPassword.getText().toString()); //chama e passa os paremetros para a função de fazer login
                 }
             }
@@ -113,6 +116,9 @@ public class LoginUser extends AppCompatActivity {
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    btnLoginUser.setEnabled(true);
+                    btnLoginUser.setText("Entrar");
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success");

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class CreateTask extends AppCompatActivity {
     private Date dataInicial;
     private Date dataFinal;
     private TaskRepository taskRepository;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,7 @@ public class CreateTask extends AppCompatActivity {
         radioGroupPrioridade = findViewById(R.id.taskPrioridade);
         btnAdicionarTarefa = findViewById(R.id.btnAddTarefa);
         btnBackAddTask = findViewById(R.id.btnBackAddTask);
+        progressBar = findViewById(R.id.splash_create_task);
 
         // DATABASE FIREBASE
         databaseReference = FirebaseFirestore.getInstance();
@@ -119,6 +122,9 @@ public class CreateTask extends AppCompatActivity {
     };
 
     private void adicionarTarefa(String titulo, String notas, Date dataInicio, Date dataFinal ) {
+        btnAdicionarTarefa.setEnabled(false);
+        btnAdicionarTarefa.setText("");
+        progressBar.setVisibility(View.VISIBLE);
         taskRepository = new TaskRepository();
         // VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
         if (titulo.isEmpty() || dataInicio == null || dataFinal == null) {
@@ -138,6 +144,8 @@ public class CreateTask extends AppCompatActivity {
         taskRepository.createTask(tarefa , new TaskFirebaseDataSource.TaskListener(){
             @Override
             public void onSuccess() {
+                btnAdicionarTarefa.setEnabled(true);
+                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(CreateTask.this, "Tarefa adicionada com sucesso", Toast.LENGTH_SHORT).show(); // ALERT
                 Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                 startActivity(intent);
@@ -145,9 +153,14 @@ public class CreateTask extends AppCompatActivity {
             }
             @Override
             public void onFailure(String errorMessage) {
+                btnAdicionarTarefa.setEnabled(true);
+                btnAdicionarTarefa.setText("Adiconar");
+                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+
+
 
     }
     public String getUid(){
