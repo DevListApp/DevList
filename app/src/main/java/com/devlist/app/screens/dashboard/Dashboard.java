@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,21 +34,23 @@ import java.util.List;
 public class Dashboard extends AppCompatActivity {
     TextView userName;
     BottomNavigationView menu_bottom;
+    Button homePageBtn, analizePageBtn, btnAddTarefa;
     private List<Task> taskList;
     private  TaskAdapter taskAdapter;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth userAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
         userName = findViewById(R.id.userName);
-        menu_bottom = findViewById(R.id.menu_bottom);
 
-        menu_bottom.setItemIconTintList(null);
-        menu_bottom.setItemBackground(null);
-        menu_bottom.setAnimation(null);
+//        menu_bottom.setItemIconTintList(null);
+//        menu_bottom.setItemBackground(null);
+//        menu_bottom.setAnimation(null);
 
         DashboardViewModel viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
 
@@ -83,26 +87,41 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-        menu_bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//        menu_bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if (item.getItemId() == R.id.page_1) {
+//                    //logica para essas opções
+//                    return true;
+//                }else if (item.getItemId() == R.id.page_2) {
+//                    return true;
+//                }else if (item.getItemId() == R.id.page_3) {
+//                    Intent intent = new Intent(getApplicationContext(), CreateTask.class);
+//                    startActivity(intent);
+//                    finish();
+//                    return true;
+//                }else if (item.getItemId() == R.id.page_4) {
+//                    return true;
+//                }else if (item.getItemId() == R.id.page_5) {
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+        homePageBtn  = findViewById(R.id.homePageBtn);
+        analizePageBtn = findViewById(R.id.analizePageBtn);
+        btnAddTarefa = findViewById(R.id.btnAddTarefa);
+
+
+        btnAddTarefa.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.page_1) {
-                    //logica para essas opções
-                    return true;
-                }else if (item.getItemId() == R.id.page_2) {
-                    return true;
-                }else if (item.getItemId() == R.id.page_3) {
-                    Intent intent = new Intent(getApplicationContext(), CreateTask.class);
-                    startActivity(intent);
-                    finish();
-                    return true;
-                }else if (item.getItemId() == R.id.page_4) {
-                    return true;
-                }else if (item.getItemId() == R.id.page_5) {
-                    return true;
-                }
-                return false;
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CreateTask.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
+
+
 }

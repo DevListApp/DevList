@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.devlist.app.screens.dashboard.Dashboard;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
-import com.devlist.app.screens.tasks.ListTasks;
 import com.devlist.app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
