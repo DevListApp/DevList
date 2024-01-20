@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray2"
-    android:orientation="vertical"
     tools:context=".screens.dashboard.Dashboard">
 
     <LinearLayout
@@ -46,17 +45,21 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/userName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="Usuário teste"
                 android:textColor="@color/purple"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:id="@+id/userName"/>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="110dp"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -76,27 +79,83 @@
 
     </LinearLayout>
 
-<!--    documentação: https://m2.material.io/components/bottom-navigation/android#using-bottom-navigation-->
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/menu_fundo">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_fundo"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/homePageBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/icon_home"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/transparent"
+            android:text="." />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"/>
+
+        <Button
+            android:id="@+id/analizePageBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:height="10dp"
+            android:background="@drawable/icons_list"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/transparent"
+            android:text="." />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"/>
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="68dp"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:width="100dp"
+            android:text="."
+            android:background="@drawable/icon_add"
+            android:backgroundTint="@color/transparent"
+            android:drawablePadding="5dp"
+            android:textColor="@color/transparent"
+            android:id="@+id/btnAddTarefa"/>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"/>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:height="10dp"
+            android:background="@drawable/icon_notification"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/transparent"
+            android:text="." />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"/>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:height="10dp"
+            android:background="@drawable/icon_user"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/transparent"
+            android:text="." />
 
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/menu_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:menu="@menu/menu_itens"
-                app:itemIconSize="28dp"
-                android:animationCache="false"/>
-
-
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
