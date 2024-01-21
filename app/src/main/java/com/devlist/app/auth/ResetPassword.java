@@ -36,7 +36,7 @@ public class ResetPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkAllFields()) {
-                    ResetPassword(email.getText().toString().trim());
+                    resetPassword(email.getText().toString().trim());
                 }
             }
         });
@@ -53,9 +53,8 @@ public class ResetPassword extends AppCompatActivity {
 
     }
 
-    public void ResetPassword(String email){
-        String emailUser = email;
-        auth.sendPasswordResetEmail(emailUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+    public void resetPassword(String email){
+        auth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 //caso der tudo certo vai executar esse
