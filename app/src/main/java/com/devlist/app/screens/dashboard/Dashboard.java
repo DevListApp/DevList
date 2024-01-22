@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
 import com.devlist.app.data.models.Task;
+import com.devlist.app.data.repositories.UserRepository;
+import com.devlist.app.screens.splash_screens.Bem_vindo;
+import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.devlist.app.screens.task.CreateTask;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,11 +38,13 @@ import java.util.List;
 public class Dashboard extends AppCompatActivity {
     TextView userName;
     BottomNavigationView menu_bottom;
-    Button homePageBtn, analizePageBtn, btnAddTarefa;
+    ImageButton btnHomePage, profile, btnAddTarefa;
     private List<Task> taskList;
     private  TaskAdapter taskAdapter;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth userAuth;
+
+    private UserRepository userRepository;
 
 
     @Override
@@ -47,6 +53,7 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         userName = findViewById(R.id.userName);
+        userRepository = new UserRepository();
 
 //        menu_bottom.setItemIconTintList(null);
 //        menu_bottom.setItemBackground(null);
@@ -108,9 +115,9 @@ public class Dashboard extends AppCompatActivity {
 //                return false;
 //            }
 //        });
-        homePageBtn  = findViewById(R.id.homePageBtn);
-        analizePageBtn = findViewById(R.id.analizePageBtn);
+        btnHomePage  = findViewById(R.id.homePageBtn);
         btnAddTarefa = findViewById(R.id.btnAddTarefa);
+        profile = findViewById(R.id.btnProfile);
 
 
         btnAddTarefa.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +128,17 @@ public class Dashboard extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnHomePage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userRepository.logoutUser();
+                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
 

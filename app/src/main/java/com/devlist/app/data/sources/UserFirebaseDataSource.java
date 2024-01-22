@@ -68,6 +68,10 @@ public class UserFirebaseDataSource {
             });
     }
 
+    public void logoutUser(){
+        authUser.signOut();
+    }
+
 
 
 }

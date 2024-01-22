@@ -47,6 +47,10 @@ public class UserRepository {
         });
     }
 
+    public void logoutUser(){
+        userFirebaseDataSource.logoutUser();
+    }
+
     public void updateUser(User user) {
         // Lógica para atualizar uma tarefa existente no Firebase
     }
