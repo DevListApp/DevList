@@ -22,6 +22,7 @@ import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
 import com.devlist.app.data.models.Task;
 import com.devlist.app.data.repositories.UserRepository;
+import com.devlist.app.screens.profile.Profile;
 import com.devlist.app.screens.splash_screens.Bem_vindo;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.devlist.app.screens.task.CreateTask;
@@ -134,6 +135,16 @@ public class Dashboard extends AppCompatActivity {
             public void onClick(View v) {
                 userRepository.logoutUser();
                 Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userRepository.logoutUser();
+                Intent intent = new Intent(getApplicationContext(), Profile.class);
                 startActivity(intent);
                 finish();
             }

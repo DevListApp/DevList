@@ -93,7 +93,8 @@
             android:layout_height="30dp"
             android:layout_margin="10dp"
             android:background="@drawable/icon_home"
-            android:text="" />
+            android:text=""
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         <Space
             android:layout_width="10dp"
             android:layout_height="1dp"/>
@@ -119,14 +120,15 @@
             app:cardCornerRadius="60dp"
             android:layout_margin="5dp"
             app:cardElevation="0dp">
+
             <ImageButton
                 android:id="@+id/btnAddTarefa"
-                android:src="@drawable/ic_add_24"
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/green"
-                />
+                android:src="@drawable/ic_add_24"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </androidx.cardview.widget.CardView>
 
         <!--<Space
@@ -153,7 +155,8 @@
             android:layout_margin="10dp"
             android:height="10dp"
             android:background="@drawable/icon_user"
-            android:backgroundTint="@color/purple" />
+            android:backgroundTint="@color/purple"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
     </LinearLayout>
