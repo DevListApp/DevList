@@ -29,7 +29,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginUser extends AppCompatActivity {
 
-    //cria as variáveis
+    //cria as variáveis e vincular com os componentes
     EditText loginEmail, loginPassword;
     Button btnBackLogin;
     Button btnLoginUser;
