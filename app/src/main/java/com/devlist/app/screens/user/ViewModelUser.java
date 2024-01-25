@@ -17,6 +17,7 @@ public class ViewModelUser extends ViewModel {
         userRepository = new UserRepository();
     }
 
+
     public void creatUser(List<String> user, UserFirebaseDataSource.UserCreationListener listener){
         userRepository.createUser(user, new UserFirebaseDataSource.UserCreationListener() {
             @Override

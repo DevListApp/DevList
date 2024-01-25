@@ -10,4 +10,5 @@
     <color name="green">#5FED9C</color>
     <color name="orange">#FF5935</color>
     <color name="yellow">#FFCC00</color>
+    <color name="gray_task">#EDECEC</color>
 </resources>

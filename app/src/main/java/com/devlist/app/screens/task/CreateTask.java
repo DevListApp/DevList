@@ -122,9 +122,6 @@ public class CreateTask extends AppCompatActivity {
     };
 
     private void adicionarTarefa(String titulo, String notas, Date dataInicio, Date dataFinal ) {
-        btnAdicionarTarefa.setEnabled(false);
-        btnAdicionarTarefa.setText("");
-        progressBar.setVisibility(View.VISIBLE);
         taskRepository = new TaskRepository();
         // VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
         if (titulo.isEmpty() || dataInicio == null || dataFinal == null) {
@@ -132,6 +129,9 @@ public class CreateTask extends AppCompatActivity {
             return;
         }
 
+        btnAdicionarTarefa.setEnabled(false);
+        btnAdicionarTarefa.setText("");
+        progressBar.setVisibility(View.VISIBLE);
         // OBTEM A PRIORIDADE ESCOLHIDA
         int idPrioridadeSelecionada = radioGroupPrioridade.getCheckedRadioButtonId();
         RadioButton prioridadeSelecionada = findViewById(idPrioridadeSelecionada);

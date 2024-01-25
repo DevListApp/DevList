@@ -102,8 +102,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                     }
                 });
                 holder.finishTask.setChecked(task.getConcluido() > 0);
-                Log.d(TAG, "Meu objeto => " + task.getConcluido());
+                Log.i(TAG, "Meu objeto => " + task.getConcluido());
                 notifyDataSetChanged();
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"Meu objeto => " + task.getId());
             }
         });
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="start"
@@ -19,13 +20,14 @@
             android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             android:background="@drawable/background_5">
+
             <Button
+                android:id="@+id/btnBackAddTask"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:backgroundTint="@color/purple"
-                android:id="@+id/btnBackAddTask"
                 android:drawableLeft="@drawable/ic_arrow_back_white_24"
-                />
+                tools:ignore="SpeakableTextPresentCheck" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,16 +61,16 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="30dp"
                 android:layout_marginTop="5dp"
-                app:cardElevation="20dp">
+                app:cardElevation="0dp">
                 <EditText
                     android:id="@+id/taskTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="Digite o título"
-                    android:textColorHint="@color/gray"
-                    android:background="@color/purple"
+                    android:textColorHint="@color/gray2"
+                    android:background="@color/gray_task"
                     android:padding="8dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background"
@@ -89,22 +91,24 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="30dp"
                 android:layout_marginTop="5dp"
-                android:backgroundTint="@color/purple"
-                app:cardElevation="20dp">
+                android:backgroundTint="@color/gray_task"
+                app:cardElevation="0dp">
 
                 <EditText
                     android:id="@+id/taskNotas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/purple"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/gray_task"
                     android:hint="Digite suas notas/descrição"
                     android:padding="8dp"
                     android:paddingStart="15dp"
                     android:textColor="@color/black"
                     android:textColorHighlight="@color/cardview_dark_background"
-                    android:textColorHint="@color/gray" />
+                    android:textColorHint="@color/gray2"
+                    tools:ignore="TouchTargetSizeCheck" />
             </androidx.cardview.widget.CardView>
 
             <!-- DEFINIR PRAZO TITULO -->
@@ -140,19 +144,21 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="20dp">
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="0dp">
+
                     <EditText
                         android:id="@+id/taskIniHora"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/gray_task"
                         android:hint="Data inicial"
-                        android:textColorHint="@color/gray"
-                        android:background="@color/purple"
                         android:padding="8dp"
+                        android:paddingStart="15dp"
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/cardview_dark_background"
-                        android:paddingStart="15dp"/>
+                        android:textColorHint="@color/gray2"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
@@ -177,21 +183,23 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="20dp"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="0dp"
                     android:layout_marginTop="20px"
                     >
+
                     <EditText
                         android:id="@+id/taskFimHora"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/gray_task"
                         android:hint="Data final"
-                        android:textColorHint="@color/gray"
-                        android:background="@color/purple"
                         android:padding="8dp"
+                        android:paddingStart="15dp"
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/cardview_dark_background"
-                        android:paddingStart="15dp"/>
+                        android:textColorHint="@color/gray2"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
