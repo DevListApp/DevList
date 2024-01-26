@@ -34,9 +34,6 @@
             android:name=".screens.splash_screens.SplashScreen2"
             android:exported="false" />
         <activity
-            android:name=".screens.home.Home"
-            android:exported="false" />
-        <activity
             android:name=".auth.ResetPassword"
             android:exported="false" />
         <activity

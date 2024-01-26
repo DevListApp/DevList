@@ -9,7 +9,7 @@ import java.util.List;
 public class UserRepository {
 
     private UserFirebaseDataSource userFirebaseDataSource;
-    private User user;
+    private User user;//instancia do model
 
     public UserRepository() {
         userFirebaseDataSource = new UserFirebaseDataSource();
@@ -26,12 +26,19 @@ public class UserRepository {
     }
 
     public User getUser() {
+        //lógica para buscar o usuário autentido
         FirebaseUser userFirebase = userFirebaseDataSource.getUserAuthenticator();
         User currentUser = new User(userFirebase);
         return currentUser;
     }
 
-
+    public String getEmail() {
+        //lógica para buscar o usuário autentido
+        FirebaseUser userFirebase = userFirebaseDataSource.getUserAuthenticator();
+        User currentUser = new User(userFirebase);
+        String userEmail = currentUser.getEmail();
+        return userEmail;
+    }
 
     public void createUser(List<String> user, UserFirebaseDataSource.UserCreationListener listener) {
         userFirebaseDataSource.createUserAuth(user, new UserFirebaseDataSource.UserCreationListener() {

@@ -143,7 +143,7 @@ public class Dashboard extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userRepository.logoutUser();
+//                userRepository.logoutUser();
                 Intent intent = new Intent(getApplicationContext(), Profile.class);
                 startActivity(intent);
                 finish();

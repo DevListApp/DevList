@@ -15,6 +15,7 @@ public class DashboardViewModel extends ViewModel {
     public DashboardViewModel(){
         userRepository = new UserRepository();
     }
+    /*LiveData é uma classe do Android Architecture Components que foi projetada para ser observada por outras partes do seu aplicativo, como componentes de interface do usuário (UI). Essa classe é usada para criar objetos observáveis que podem ser atualizados e notificar automaticamente os observadores sobre mudanças nos dados.*/
     public LiveData<String> getUser() {
         if(userName == null){
             userName = new MutableLiveData<>();
