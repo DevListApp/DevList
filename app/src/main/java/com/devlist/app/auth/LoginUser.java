@@ -51,13 +51,6 @@ public class LoginUser extends AppCompatActivity {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
-        FirebaseUser currentUser = authUser.getCurrentUser();
-        // Se o usuário estiver autenticado
-        if(currentUser != null) {
-            startActivity(new Intent(this, Dashboard.class));
-            finish();
-        }
-
         btnBackLogin = findViewById(R.id.btnBackLogin);//atribuí as variáveis aos compoenntes
         btnLoginUser = findViewById(R.id.btnLoginUser);
         loginEmail = findViewById(R.id.loginEmail);

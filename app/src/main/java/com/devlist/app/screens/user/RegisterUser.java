@@ -73,6 +73,9 @@ public class RegisterUser extends AppCompatActivity {
                             public void onSuccess() {
                                 // Manipula a criação bem-sucedida do usuário
                                 Toast.makeText(RegisterUser.this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), LoginUser.class);
+                                startActivity(intent);
+                                finish();
                             }
 
                             @Override
