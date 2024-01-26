@@ -45,6 +45,8 @@
         <activity
             android:name=".screens.task.CreateTask"
             android:exported="false" />
+        <activity android:name=".screens.task.UpdateTask"
+            android:exported="false" />
     </application>
 
 </manifest>
