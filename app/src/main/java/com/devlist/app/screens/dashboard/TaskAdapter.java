@@ -2,7 +2,9 @@ package com.devlist.app.screens.dashboard;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +22,8 @@ import com.devlist.app.R;
 import com.devlist.app.data.models.Task;
 import com.devlist.app.data.repositories.TaskRepository;
 import com.devlist.app.data.sources.TaskFirebaseDataSource;
-import com.devlist.app.screens.task.CreateTask;
+import com.devlist.app.screens.task.UpdateTask;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -49,6 +50,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             dt_scheduled = view.findViewById(R.id.dt_scheduled);
             statusTask = view.findViewById(R.id.statusTask);
             finishTask = view.findViewById(R.id.checkTask);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, UpdateTask.class);
+                    context.startActivity(intent);
+                    // Finalizar a Activity atual
+                    if (context instanceof Activity) {
+                        ((Activity) context).finish();
+                    }
+                }
+            });
         }
 
         public void bind(Task task) {
@@ -106,13 +119,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 notifyDataSetChanged();
             }
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG,"Meu objeto => " + task.getId());
-            }
-        });
-
     }
 
     @Override

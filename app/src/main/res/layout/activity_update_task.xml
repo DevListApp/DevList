@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TITULO NOVA TAREFA -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:background="@drawable/background_5">
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/purple"
+                android:id="@+id/btnBackEditTask"
+                android:drawableLeft="@drawable/ic_arrow_back_white_24"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editar Tarefa"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+
+            <!-- TITULO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Título"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- TITULO INPUT -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:cardCornerRadius="30dp"
+                android:layout_marginTop="5dp"
+                app:cardElevation="0dp">
+                <EditText
+                    android:id="@+id/taskTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColorHint="@color/gray2"
+                    android:background="@color/gray_task"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:paddingStart="15dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <!-- NOTAS / DESCRICAO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notas/Descrição"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- NOTAS INPUT -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                app:cardCornerRadius="30dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/gray_task"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/taskNotas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray_task"
+                    android:padding="8dp"
+                    android:paddingStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:textColorHint="@color/gray2" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- DEFINIR PRAZO TITULO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Definir prazo"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- HORARIO INICIO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <!-- INICIO HORA TEXTO -->
+
+                <!-- .INICIO HORA INPUT -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Início:"
+                    android:textColor="@color/purple"
+                    android:textSize="16sp"
+                    />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="0dp">
+                    <EditText
+                        android:id="@+id/taskIniHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/gray2"
+                        android:background="@color/gray_task"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:paddingStart="15dp"/>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- TERMINO HORARIO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- FIM HORA TEXTO -->
+
+                <!-- FIM HORA INPUT -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Término:"
+                    android:textColor="@color/purple"
+                    android:textSize="16sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginTop="20px"
+                    >
+                    <EditText
+                        android:id="@+id/taskFimHora"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/gray2"
+                        android:background="@color/gray_task"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/cardview_dark_background"
+                        android:paddingStart="15dp"/>
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- PRIORIDADE TITULO -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prioridade"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp" />
+
+            <!-- PRIORIDADE (ESCOLHER A OPCAO) -->
+            <RadioGroup
+                android:id="@+id/taskPrioridade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <!-- PRIORIDADE ALTA-->
+                <RadioButton
+                    android:id="@+id/taskAltaPrioridade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Alta"
+                    android:textColor="@color/purple"/>
+                <!-- PRIORIDADE MEDIA -->
+                <RadioButton
+                    android:id="@+id/taskMediaPrioridade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Média"
+                    android:textColor="@color/purple"/>
+                <!-- PRIORIDADE BAIXA-->
+                <RadioButton
+                    android:id="@+id/taskBaixaPrioridade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Baixa"
+                    android:textColor="@color/purple"/>
+            </RadioGroup>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="start"
+                    >
+                    <Button
+                        android:id="@+id/btnRemoveTask"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/orange"
+                        android:text="Remover"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:cornerRadius="30dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    >
+                    <Button
+                        android:id="@+id/btnEditTask"
+                        android:layout_width="150dp"
+                        android:layout_height="50dp"
+                        android:backgroundTint="@color/orange"
+                        android:text="Atualizar"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        app:cornerRadius="30dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="right"
+                    >
+                    <ProgressBar
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:indeterminateTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:id="@+id/splash_create_task"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
