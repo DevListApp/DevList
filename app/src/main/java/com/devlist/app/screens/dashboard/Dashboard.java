@@ -56,10 +56,6 @@ public class Dashboard extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         userRepository = new UserRepository();
 
-//        menu_bottom.setItemIconTintList(null);
-//        menu_bottom.setItemBackground(null);
-//        menu_bottom.setAnimation(null);
-
         DashboardViewModel viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
 
         userName.setText(viewModel.loadUser());
@@ -95,27 +91,6 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
-//        menu_bottom.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                if (item.getItemId() == R.id.page_1) {
-//                    //logica para essas opções
-//                    return true;
-//                }else if (item.getItemId() == R.id.page_2) {
-//                    return true;
-//                }else if (item.getItemId() == R.id.page_3) {
-//                    Intent intent = new Intent(getApplicationContext(), CreateTask.class);
-//                    startActivity(intent);
-//                    finish();
-//                    return true;
-//                }else if (item.getItemId() == R.id.page_4) {
-//                    return true;
-//                }else if (item.getItemId() == R.id.page_5) {
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
         btnHomePage  = findViewById(R.id.homePageBtn);
         btnAddTarefa = findViewById(R.id.btnAddTarefa);
         profile = findViewById(R.id.btnProfile);

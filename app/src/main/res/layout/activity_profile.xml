@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".screens.profile.Profile">
+    tools:context=".screens.profile.Profile"
+    android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,14 +19,15 @@
             android:background="@drawable/circle_top_component">
 
             <Button
-                android:id="@+id/btnBackAddTask"
+                android:id="@+id/btnBackProfile"
                 android:layout_width="57dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="false"
                 android:backgroundTint="@color/purple"
                 android:drawableLeft="@drawable/ic_arrow_back_white_24"
                 android:text="."
-                android:textColor="@color/transparent" />
+                android:textColor="@color/transparent"
+                />
 
             <RelativeLayout
                 android:layout_width="80dp"
@@ -67,7 +69,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="392dp"
+            android:layout_width="match_parent"
             android:layout_height="345dp"
             android:layout_marginBottom="20dp"
             android:orientation="vertical"
@@ -75,7 +77,7 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Conta:"
                 android:textColor="@color/purple"
@@ -87,10 +89,10 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="10dp"
-                >
+                app:cardElevation="10dp">
 
                 <TextView
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/purple"
@@ -98,8 +100,7 @@
                     android:paddingStart="15dp"
                     android:text="Nome"
                     android:textColor="@color/white"
-                    android:textSize="20dp"
-                    android:id="@+id/inputEmail"/>
+                    android:textSize="20dp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -131,6 +132,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
+                android:id="@+id/btn_sair"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
@@ -138,8 +140,7 @@
                 android:text="Encerrar seção"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:cardCornerRadius="50dp"
-                android:id="@+id/btn_sair"/>
+                app:cardCornerRadius="50dp" />
 
 
         </LinearLayout>
