@@ -99,8 +99,18 @@ public class TaskRepository {
     }
 
 
-    public void deleteTask(String taskId) {
-        // Lógica para excluir uma tarefa do Firebase pelo ID
+    public void deleteTask(String taskId, TaskFirebaseDataSource.TaskListener listener) {
+        taskFirebaseDataSource.deleteTask(taskId, new TaskFirebaseDataSource.TaskListener() {
+            @Override
+            public void onSuccess() {
+                listener.onSuccess();
+            }
+
+            @Override
+            public void onFailure(String errorMessage) {
+                listener.onFailure(errorMessage);
+            }
+        });
     }
 
 }

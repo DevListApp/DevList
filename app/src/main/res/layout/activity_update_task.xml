@@ -260,6 +260,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="start"
+                    >
+                    <ProgressBar
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:indeterminateTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:id="@+id/splash_remove_task"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:gravity="end"
                     >
                     <Button

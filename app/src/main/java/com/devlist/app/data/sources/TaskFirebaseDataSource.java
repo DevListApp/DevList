@@ -49,7 +49,6 @@ public class TaskFirebaseDataSource {
         void onTasksLoaded(List<Task> tasks);
         void onDataNotAvailable(Exception exception);
     }
-
     public void createTask(Task tarefa , TaskListener listener){
         // AO CLICAR, ENVIA OS DADOS PARA PODER SALVAR NO BANCO
         databaseReference.collection("tasks").add(tarefa)
@@ -112,6 +111,7 @@ public class TaskFirebaseDataSource {
             }
         });
     }
+
     public void updateTask(Task task, TaskListener listener){
         documentReference = databaseReference.collection("tasks").document(task.getId());
         documentReference
@@ -130,6 +130,7 @@ public class TaskFirebaseDataSource {
                 });
 
     }
+
     public Map<String, Object> getMapTask(Task task){
         Map<String, Object> taskUpdate = new HashMap<>();
         taskUpdate.put("auth", task.getAuth());
@@ -141,6 +142,24 @@ public class TaskFirebaseDataSource {
         taskUpdate.put("prioridade", task.getPrioridade());
         taskUpdate.put("titulo", task.getTitulo());
         return taskUpdate;
+    }
+
+    public void deleteTask(String TaskId, TaskListener listener){
+        documentReference = databaseReference.collection("tasks").document(TaskId);
+        documentReference
+                .delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        listener.onSuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        listener.onFailure("Erro ao excluir esta tarefa " + e.getMessage());
+                    }
+                });
     }
 
 }

@@ -29,8 +29,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class UpdateTask extends AppCompatActivity {
-    private ProgressBar progressBar;
-    private Button btnBackEditTask, btnUpdateTask;
+    private ProgressBar progressBar, progressBarRemove;
+    private Button btnBackEditTask, btnUpdateTask, btnRemoveTask;
     private EditText titleTask, descriptionTask, dt_start_scheduled, dt_end_scheduled;
     private RadioButton heightPriority, midllePriority, lowPriority;
     private RadioGroup radioGroup;
@@ -51,10 +51,12 @@ public class UpdateTask extends AppCompatActivity {
         dt_end_scheduled = findViewById(R.id.taskDtFinalEdit);
         btnUpdateTask = findViewById(R.id.btnUpdateTask);
         progressBar = findViewById(R.id.splash_update_task);
+        progressBarRemove = findViewById(R.id.splash_remove_task);
         heightPriority = findViewById(R.id.taskHeightUpdatePriority);
         midllePriority = findViewById(R.id.taskMidlleUpdatePriority);
         lowPriority = findViewById(R.id.taskLowUpdatePriority);
         radioGroup = findViewById(R.id.taskUpdatePriority);
+        btnRemoveTask = findViewById(R.id.btnRemoveTask);
 
         btnBackEditTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +115,33 @@ public class UpdateTask extends AppCompatActivity {
                 });
             }
         });
+
+        btnRemoveTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnRemoveTask.setEnabled(true);
+                btnRemoveTask.setText("");
+                progressBarRemove.setVisibility(View.VISIBLE);
+                taskRepository.deleteTask(selectedTask.getId(), new TaskFirebaseDataSource.TaskListener() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(UpdateTask.this, "Tarefa excluída com sucesso!", Toast.LENGTH_SHORT);
+                        Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        btnRemoveTask.setEnabled(false);
+                        btnRemoveTask.setText("Remover");
+                        progressBarRemove.setVisibility(View.INVISIBLE);
+                        Toast.makeText(UpdateTask.this, errorMessage, Toast.LENGTH_SHORT);
+                    }
+                });
+            }
+        });
+
         dt_start_scheduled.setInputType(InputType.TYPE_NULL);
         dt_start_scheduled.setOnClickListener(new View.OnClickListener() {
             @Override
