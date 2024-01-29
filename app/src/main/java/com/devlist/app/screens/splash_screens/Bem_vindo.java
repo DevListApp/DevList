@@ -32,6 +32,9 @@ public class Bem_vindo extends BottomSheetDialogFragment {
         if(currentUser != null) {
             startActivity(new Intent(getActivity(), Dashboard.class));
             dismiss();
+            if (getActivity() != null) {
+                getActivity().finish();
+            }
         }
 
         // Configurar o clique no botão de login
@@ -41,6 +44,9 @@ public class Bem_vindo extends BottomSheetDialogFragment {
                 // Fechar a tela de boas-vindas e abrir a tela de login
                 dismiss();
                 abrirLogin();
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
             }
         });
 
@@ -51,6 +57,9 @@ public class Bem_vindo extends BottomSheetDialogFragment {
                 // Fechar a tela de boas-vindas e abrir a tela de cadastro
                 dismiss();
                 abrirCadastro();
+                if (getActivity() != null) {
+                    getActivity().finish();
+                }
             }
         });
 
@@ -65,6 +74,7 @@ public class Bem_vindo extends BottomSheetDialogFragment {
         // Iniciar a atividade e fechar a tela de boas-vindas
         startActivity(intent);
         dismiss();
+
     }
 
     // Método para abrir a tela de cadastro
