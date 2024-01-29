@@ -45,6 +45,8 @@ public class CreateTask extends AppCompatActivity {
     private DatePickerDialog picker;
     private Date dataInicial;
     private Date dataFinal;
+    private int resumoCount;
+    private String resumoDate;
     private TaskRepository taskRepository;
     private ProgressBar progressBar;
     @Override
@@ -121,7 +123,7 @@ public class CreateTask extends AppCompatActivity {
         picker.show();
     };
 
-    private void adicionarTarefa(String titulo, String notas, Date dataInicio, Date dataFinal ) {
+    private void adicionarTarefa(String titulo, String notas, Date dataInicio, Date dataFinal) {
         taskRepository = new TaskRepository();
         // VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
         if (titulo.isEmpty() || dataInicio == null || dataFinal == null) {
@@ -139,8 +141,10 @@ public class CreateTask extends AppCompatActivity {
         // LOG TESTAR
         Log.d("DEBUG", "Prioridade Selecionada: " + prioridadeSelecionada.getText().toString());
 
+        resumoCount = 0;
+        resumoDate = "";
         // CHAMANDO INSTANCIA DA CLASSE TAREFAS
-        Task tarefa = new Task("", titulo, notas, dataInicio, dataFinal, getCodigoPrioridade(prioridadeSelecionada.getText().toString()), getUid(), 0);
+        Task tarefa = new Task("", titulo, notas, dataInicio, dataFinal, getCodigoPrioridade(prioridadeSelecionada.getText().toString()), getUid(), 0,resumoCount, resumoDate);
         taskRepository.createTask(tarefa , new TaskFirebaseDataSource.TaskListener(){
             @Override
             public void onSuccess() {

@@ -11,8 +11,11 @@ public class Task {
     private Date horaFim;
     private int prioridade;
     private String auth;
+    private int resumoCount;
 
-    public Task(String id, String titulo, String notas, Date horaInicio, Date horaFim, int prioridade, String authId, int concluido) {
+    private String resumoDate;
+
+    public Task(String id, String titulo, String notas, Date horaInicio, Date horaFim, int prioridade, String authId, int concluido, int resumoCount, String resumoDate) {
         this.id = id;
         this.titulo = titulo;
         this.notas = notas;
@@ -21,6 +24,8 @@ public class Task {
         this.prioridade = prioridade;
         this.auth = authId;
         this.concluido = concluido;
+        this.resumoDate = resumoDate;
+        this.resumoCount = resumoCount;
     }
     public Task(){
     }
