@@ -104,6 +104,14 @@ public class UpdateTask extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     return ;
                 }
+                // VERIFICA SE DATA INICIAL É MAIOR QUE DATA FINAL
+                if(dataInicial.after(dataFinal)) {
+                    Toast.makeText(getApplicationContext(), "Datas inválidas!", Toast.LENGTH_SHORT).show();
+                    btnUpdateTask.setEnabled(true);
+                    btnUpdateTask.setText("Atualizar");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return;
+                }
                 taskRepository.updateTask(getInformationTask(), new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {

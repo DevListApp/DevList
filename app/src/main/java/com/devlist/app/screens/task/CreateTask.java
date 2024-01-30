@@ -126,10 +126,14 @@ public class CreateTask extends AppCompatActivity {
         // OBTEM A PRIORIDADE ESCOLHIDA
         int idPrioridadeSelecionada = radioGroupPrioridade.getCheckedRadioButtonId();
         RadioButton prioridadeSelecionada = findViewById(idPrioridadeSelecionada);
-
         // VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
         if (titulo.isEmpty() || notas.isEmpty() || dataInicio == null || dataFinal == null || prioridadeSelecionada == null) {
             Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // VERIFICA SE DATA INICIAL É MAIOR QUE DATA FINAL
+        if(dataInicio.after(dataFinal)) {
+            Toast.makeText(this, "Datas inválidas!", Toast.LENGTH_SHORT).show();
             return;
         }
 
