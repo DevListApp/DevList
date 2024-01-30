@@ -93,9 +93,17 @@ public class UpdateTask extends AppCompatActivity {
         btnUpdateTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnUpdateTask.setEnabled(true);
+                btnUpdateTask.setEnabled(false);
                 btnUpdateTask.setText("");
                 progressBar.setVisibility(View.VISIBLE);
+                // VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
+                if (titleTask.getText().toString().isEmpty() || descriptionTask.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                    btnUpdateTask.setEnabled(true);
+                    btnUpdateTask.setText("Atualizar");
+                    progressBar.setVisibility(View.INVISIBLE);
+                    return ;
+                }
                 taskRepository.updateTask(getInformationTask(), new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {
@@ -108,7 +116,7 @@ public class UpdateTask extends AppCompatActivity {
                     @Override
                     public void onFailure(String errorMessage) {
                         Toast.makeText(UpdateTask.this, errorMessage, Toast.LENGTH_SHORT).show();
-                        btnUpdateTask.setEnabled(false);
+                        btnUpdateTask.setEnabled(true);
                         btnUpdateTask.setText("Atualizar");
                         progressBar.setVisibility(View.INVISIBLE);
                     }
@@ -125,7 +133,7 @@ public class UpdateTask extends AppCompatActivity {
                 taskRepository.deleteTask(selectedTask.getId(), new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(UpdateTask.this, "Tarefa excluída com sucesso!", Toast.LENGTH_SHORT);
+                        Toast.makeText(UpdateTask.this, "Tarefa excluída com sucesso!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                         startActivity(intent);
                         finish();
