@@ -96,7 +96,8 @@
                 <EditText
                     android:id="@+id/taskEditNote"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="start"
                     android:background="@color/gray_task"
                     android:padding="8dp"
                     android:paddingStart="15dp"
