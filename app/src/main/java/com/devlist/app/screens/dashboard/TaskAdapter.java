@@ -1,5 +1,6 @@
 package com.devlist.app.screens.dashboard;
 
+import static android.view.View.resolveSizeAndState;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.Activity;
@@ -111,12 +112,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             public void onClick(View v) {
                 int status = task.getConcluido() > 0 ? 0 : 1;
                 task.setConcluido(status);
-
-                // Atualize a propriedade 'resumoDate'
-                task.setResumoDate(dataFinalizacao);
+//                task.setResumoDate(dataFinalizacao);
 
                 // Atualize a propriedade 'resumoCount' de acordo com a lógica desejada
-                task.setResumoCount(task.getResumoCount() == 0 ? 1 : 0);
+//                task.setResumoCount(
+//                        task.getResumoCount() == 0 ? 1 : 0);
+
+                if(task.getResumoCount() != 0 ){
+                    task.setResumoCount(0);
+                    task.setResumoDate("");
+                }else{
+                    task.setResumoCount(1);
+                    task.setResumoDate(dataFinalizacao);
+                }
 
                 taskRepository.setFinishTask(task, new TaskFirebaseDataSource.TaskListener() {
                     @Override
