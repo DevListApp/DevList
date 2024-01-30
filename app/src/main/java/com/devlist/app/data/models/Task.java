@@ -92,4 +92,18 @@ public class Task {
     public void setPrioridade(int prioridade) {
         this.prioridade = prioridade;
     }
+
+    public void setResumoDate(String resumoDate) {
+        this.resumoDate = resumoDate;
+    }
+    public String getResumoDate() {
+        return resumoDate;
+    }
+
+    public void setResumoCount(int resumoCount) {
+        this.resumoCount = resumoCount;
+    }
+    public int getResumoCount() {
+        return resumoCount;
+    }
 }

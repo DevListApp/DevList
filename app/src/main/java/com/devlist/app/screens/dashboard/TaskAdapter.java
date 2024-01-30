@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +27,7 @@ import com.devlist.app.data.sources.TaskFirebaseDataSource;
 import com.devlist.app.screens.task.UpdateTask;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -93,33 +96,46 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return new TaskViewHolder(view, parent.getContext());
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         taskRepository = new TaskRepository();
         Task task = taskList.get(position);
-        holder.finishTask.setChecked( task.getConcluido() > 0 );
+        holder.finishTask.setChecked(task.getConcluido() > 0);
         holder.bind(task);
+        LocalDate data = LocalDate.now();
+        String dataFinalizacao = data.toString();
+
         holder.finishTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int status = task.getConcluido()  > 0 ? 0 : 1;
+                int status = task.getConcluido() > 0 ? 0 : 1;
                 task.setConcluido(status);
+
+                // Atualize a propriedade 'resumoDate'
+                task.setResumoDate(dataFinalizacao);
+
+                // Atualize a propriedade 'resumoCount' de acordo com a lógica desejada
+                task.setResumoCount(task.getResumoCount() == 0 ? 1 : 0);
+
                 taskRepository.setFinishTask(task, new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(v.getContext() , "Tarefa atualizada com sucesso!", Toast.LENGTH_SHORT).show(); // ALERT
+                        Toast.makeText(v.getContext(), "Tarefa atualizada com sucesso!", Toast.LENGTH_SHORT).show();
+                        // Atualize o estado do 'finishTask' após o sucesso da operação
+                        holder.finishTask.setChecked(task.getConcluido() > 0);
+                        notifyDataSetChanged();
                     }
+
                     @Override
                     public void onFailure(String errorMessage) {
                         Toast.makeText(v.getContext(), errorMessage, Toast.LENGTH_SHORT).show();
                     }
                 });
-                holder.finishTask.setChecked(task.getConcluido() > 0);
-                Log.i(TAG, "Meu objeto => " + task.getConcluido());
-                notifyDataSetChanged();
             }
         });
     }
+
 
     @Override
     public int getItemCount() {

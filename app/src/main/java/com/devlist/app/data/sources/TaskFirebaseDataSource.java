@@ -50,20 +50,25 @@ public class TaskFirebaseDataSource {
 
     public void setFinishTask(Task tarefa, TaskListener listener){
         documentReference = databaseReference.collection("tasks").document(tarefa.getId());
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("concluido", tarefa.getConcluido());
+        updates.put("resumoDate", tarefa.getResumoDate());
+        updates.put("resumoCount", tarefa.getResumoCount());
+
         documentReference
-            .update("concluido", tarefa.getConcluido())
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void unused) {
-                    listener.onSuccess();
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    listener.onFailure("Erro ao atualizar tarefa! " + e.getMessage());
-                }
-            });
+                .update(updates)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            listener.onSuccess();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            listener.onFailure("Erro ao atualizar tarefa! " + e.getMessage());
+                        }
+                    });
     }
 
 }
