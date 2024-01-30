@@ -36,8 +36,14 @@ import java.util.Locale;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
     private List<Task> taskList;
+    private DashboardViewModel viewModel;
     private TaskRepository taskRepository;
-
+    // Construtor do adaptador
+    public TaskAdapter(List<Task> taskList, DashboardViewModel viewModel) {
+        this.taskList = taskList;
+        this.viewModel = viewModel;
+        taskRepository = new TaskRepository();
+    }
     //Um ViewHolder mantém a referência aos elementos de uma única linha
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
         private final TextView titleTextView;
@@ -55,17 +61,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             statusTask = view.findViewById(R.id.statusTask);
             finishTask = view.findViewById(R.id.checkTask);
 
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, UpdateTask.class);
-                    context.startActivity(intent);
-                    // Finalizar a Activity atual
-                    if (context instanceof Activity) {
-                        ((Activity) context).finish();
-                    }
-                }
-            });
         }
 
         public void bind(Task task) {
@@ -87,9 +82,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         }
     }
 
-    public TaskAdapter(List<Task> taskList) {
-        this.taskList = taskList;
-    }
     @NonNull
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -100,7 +92,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
-        taskRepository = new TaskRepository();
         Task task = taskList.get(position);
         holder.finishTask.setChecked(task.getConcluido() > 0);
         holder.bind(task);
@@ -142,6 +133,21 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
                 });
             }
         });
+
+        holder.itemView.setOnClickListener(view -> {
+            viewModel.selectTask(task);
+        });
+    }
+
+    public void setTasks(List<Task> tasks) {
+        taskList = tasks;
+        notifyDataSetChanged();
+    }
+
+    public void updateTaskList(List<Task> newTaskList) {
+        taskList.clear();
+        taskList.addAll(newTaskList);
+        notifyDataSetChanged();
     }
 
 

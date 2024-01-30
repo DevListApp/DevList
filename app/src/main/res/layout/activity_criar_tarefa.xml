@@ -99,10 +99,11 @@
                 <EditText
                     android:id="@+id/taskNotas"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
                     android:background="@color/gray_task"
                     android:hint="Digite suas notas/descrição"
+                    android:gravity="start"
                     android:padding="8dp"
                     android:paddingStart="15dp"
                     android:textColor="@color/black"

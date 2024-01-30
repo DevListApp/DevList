@@ -56,6 +56,7 @@ public class RegisterUser extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
                 // Inicia a atividade SplashScreen2
                 startActivity(intent);
+                finish();
             }
         });
 

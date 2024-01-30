@@ -125,18 +125,23 @@ public class CreateTask extends AppCompatActivity {
 
     private void adicionarTarefa(String titulo, String notas, Date dataInicio, Date dataFinal) {
         taskRepository = new TaskRepository();
+        // OBTEM A PRIORIDADE ESCOLHIDA
+        int idPrioridadeSelecionada = radioGroupPrioridade.getCheckedRadioButtonId();
+        RadioButton prioridadeSelecionada = findViewById(idPrioridadeSelecionada);
         // VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
-        if (titulo.isEmpty() || dataInicio == null || dataFinal == null) {
-            Toast.makeText(this, "Preencha todos os campos obrigatórios", Toast.LENGTH_SHORT).show();
+        if (titulo.isEmpty() || notas.isEmpty() || dataInicio == null || dataFinal == null || prioridadeSelecionada == null) {
+            Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        // VERIFICA SE DATA INICIAL É MAIOR QUE DATA FINAL
+        if(dataInicio.after(dataFinal)) {
+            Toast.makeText(this, "Datas inválidas!", Toast.LENGTH_SHORT).show();
             return;
         }
 
         btnAdicionarTarefa.setEnabled(false);
         btnAdicionarTarefa.setText("");
         progressBar.setVisibility(View.VISIBLE);
-        // OBTEM A PRIORIDADE ESCOLHIDA
-        int idPrioridadeSelecionada = radioGroupPrioridade.getCheckedRadioButtonId();
-        RadioButton prioridadeSelecionada = findViewById(idPrioridadeSelecionada);
 
         // LOG TESTAR
         Log.d("DEBUG", "Prioridade Selecionada: " + prioridadeSelecionada.getText().toString());
@@ -148,8 +153,6 @@ public class CreateTask extends AppCompatActivity {
         taskRepository.createTask(tarefa , new TaskFirebaseDataSource.TaskListener(){
             @Override
             public void onSuccess() {
-                btnAdicionarTarefa.setEnabled(true);
-                progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(CreateTask.this, "Tarefa adicionada com sucesso", Toast.LENGTH_SHORT).show(); // ALERT
                 Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                 startActivity(intent);

@@ -63,7 +63,7 @@
                 android:layout_marginTop="5dp"
                 app:cardElevation="0dp">
                 <EditText
-                    android:id="@+id/taskTitulo"
+                    android:id="@+id/taskEditTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textColorHint="@color/gray2"
@@ -94,9 +94,10 @@
                 app:cardElevation="0dp">
 
                 <EditText
-                    android:id="@+id/taskNotas"
+                    android:id="@+id/taskEditNote"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="start"
                     android:background="@color/gray_task"
                     android:padding="8dp"
                     android:paddingStart="15dp"
@@ -142,7 +143,7 @@
                     app:cardCornerRadius="30dp"
                     app:cardElevation="0dp">
                     <EditText
-                        android:id="@+id/taskIniHora"
+                        android:id="@+id/taskDtInitialEdit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColorHint="@color/gray2"
@@ -180,7 +181,7 @@
                     android:layout_marginTop="20px"
                     >
                     <EditText
-                        android:id="@+id/taskFimHora"
+                        android:id="@+id/taskDtFinalEdit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColorHint="@color/gray2"
@@ -205,28 +206,28 @@
 
             <!-- PRIORIDADE (ESCOLHER A OPCAO) -->
             <RadioGroup
-                android:id="@+id/taskPrioridade"
+                android:id="@+id/taskUpdatePriority"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <!-- PRIORIDADE ALTA-->
                 <RadioButton
-                    android:id="@+id/taskAltaPrioridade"
+                    android:id="@+id/taskHeightUpdatePriority"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Alta"
                     android:textColor="@color/purple"/>
                 <!-- PRIORIDADE MEDIA -->
                 <RadioButton
-                    android:id="@+id/taskMediaPrioridade"
+                    android:id="@+id/taskMidlleUpdatePriority"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Média"
                     android:textColor="@color/purple"/>
                 <!-- PRIORIDADE BAIXA-->
                 <RadioButton
-                    android:id="@+id/taskBaixaPrioridade"
+                    android:id="@+id/taskLowUpdatePriority"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Baixa"
@@ -260,10 +261,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:gravity="start"
+                    >
+                    <ProgressBar
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:indeterminateTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:id="@+id/splash_remove_task"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:gravity="end"
                     >
                     <Button
-                        android:id="@+id/btnEditTask"
+                        android:id="@+id/btnUpdateTask"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:backgroundTint="@color/orange"
@@ -285,7 +299,7 @@
                         android:layout_height="wrap_content"
                         android:indeterminateTint="@android:color/white"
                         android:visibility="invisible"
-                        android:id="@+id/splash_create_task"/>
+                        android:id="@+id/splash_update_task"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
