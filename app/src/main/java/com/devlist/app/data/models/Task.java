@@ -16,8 +16,11 @@ public class Task implements Parcelable {
     private Date horaFim;
     private int prioridade;
     private String auth;
+    private int resumoCount;
 
-    public Task(String id, String titulo, String notas, Date horaInicio, Date horaFim, int prioridade, String authId, int concluido) {
+    private String resumoDate;
+
+    public Task(String id, String titulo, String notas, Date horaInicio, Date horaFim, int prioridade, String authId, int concluido, int resumoCount, String resumoDate) {
         this.id = id;
         this.titulo = titulo;
         this.notas = notas;
@@ -26,6 +29,8 @@ public class Task implements Parcelable {
         this.prioridade = prioridade;
         this.auth = authId;
         this.concluido = concluido;
+        this.resumoDate = resumoDate;
+        this.resumoCount = resumoCount;
     }
     public Task(){
     }
@@ -130,5 +135,18 @@ public class Task implements Parcelable {
     public void setPrioridade(int prioridade) {
         this.prioridade = prioridade;
     }
+
+    public void setResumoDate(String resumoDate) {
+        this.resumoDate = resumoDate;
+    }
+    public String getResumoDate() {
+        return resumoDate;
+    }
+
+    public void setResumoCount(int resumoCount) {
+        this.resumoCount = resumoCount;
+    }
+    public int getResumoCount() {
+        return resumoCount;
 
 }

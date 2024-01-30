@@ -46,7 +46,6 @@ public class Dashboard extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         userRepository = new UserRepository();
 
-
         DashboardViewModel viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
 
         userName.setText(viewModel.loadUser());

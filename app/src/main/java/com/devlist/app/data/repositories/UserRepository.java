@@ -20,9 +20,11 @@ public class UserRepository {
         return null;
     }
 
-    public User getUserByUid(String userUid) {
-        // Lógica para buscar uma tarefa específica do Firebase pelo ID
-        return null;
+    public String getId() {
+        FirebaseUser userFirebase = userFirebaseDataSource.getUserAuthenticator();
+        User currentUser = new User(userFirebase);
+        String userId = currentUser.getId();
+        return userId;
     }
 
     public User getUser() {
