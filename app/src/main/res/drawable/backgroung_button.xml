@@ -1,0 +1,12 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+android:shape="oval"
+android:tint="@color/purple_data">
+
+<padding
+    android:right="5dp"
+    android:left="5dp"
+    android:bottom="5dp"
+    android:top="5dp"/>
+
+
+</shape>

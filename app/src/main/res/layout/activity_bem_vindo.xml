@@ -30,23 +30,24 @@
         android:layout_height="wrap_content"
         android:text="Apresentamos nosso aplicativo mais recente, cuidadosamente projetado para simplificar e aprimorar a gestão de suas tarefas diárias. Mantenha-se organizado, elimine o caos e alcance seus objetivos com facilidade!"
         android:gravity="center"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textColor="@color/purple"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center">
         
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:text="Login"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:backgroundTint="@color/orange"
-            app:cornerRadius="50dp"
+            android:textColor="@color/white"
+            app:cornerRadius="30dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/btnLogin"/>
 
@@ -55,13 +56,13 @@
             android:layout_height="50dp"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:layout_width="130dp"
+            android:textColor="@color/white"
+            android:layout_height="50dp"
             android:text="Cadastro"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:backgroundTint="@color/orange"
-            app:cornerRadius="50dp"
+            app:cornerRadius="30dp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/btnRegister"/>
         

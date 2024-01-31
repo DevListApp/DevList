@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class ResetPassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_reset_password);
 
         btnResetPasswor = findViewById(R.id.btnResetPasswor);
@@ -36,7 +38,7 @@ public class ResetPassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkAllFields()) {
-                    ResetPassword(email.getText().toString().trim());
+                    resetPassword(email.getText().toString().trim());
                 }
             }
         });
@@ -53,9 +55,8 @@ public class ResetPassword extends AppCompatActivity {
 
     }
 
-    public void ResetPassword(String email){
-        String emailUser = email;
-        auth.sendPasswordResetEmail(emailUser).addOnSuccessListener(new OnSuccessListener<Void>() {
+    public void resetPassword(String email){
+        auth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 //caso der tudo certo vai executar esse

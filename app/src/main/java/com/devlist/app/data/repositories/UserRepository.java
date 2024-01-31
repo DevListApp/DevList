@@ -2,12 +2,14 @@ package com.devlist.app.data.repositories;
 
 import com.devlist.app.data.models.User;
 import com.devlist.app.data.sources.UserFirebaseDataSource;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
 public class UserRepository {
 
     private UserFirebaseDataSource userFirebaseDataSource;
+    private User user;//instancia do model
 
     public UserRepository() {
         userFirebaseDataSource = new UserFirebaseDataSource();
@@ -18,16 +20,27 @@ public class UserRepository {
         return null;
     }
 
-    public User getUserByUid(String userUid) {
-        // Lógica para buscar uma tarefa específica do Firebase pelo ID
-        return null;
+    public String getId() {
+        FirebaseUser userFirebase = userFirebaseDataSource.getUserAuthenticator();
+        User currentUser = new User(userFirebase);
+        String userId = currentUser.getId();
+        return userId;
     }
 
-    public User getUser(){
-        User user = new User(userFirebaseDataSource.getUserAuthenticator());
-        return user;
+    public User getUser() {
+        //lógica para buscar o usuário autentido
+        FirebaseUser userFirebase = userFirebaseDataSource.getUserAuthenticator();
+        User currentUser = new User(userFirebase);
+        return currentUser;
     }
 
+    public String getEmail() {
+        //lógica para buscar o usuário autentido
+        FirebaseUser userFirebase = userFirebaseDataSource.getUserAuthenticator();
+        User currentUser = new User(userFirebase);
+        String userEmail = currentUser.getEmail();
+        return userEmail;
+    }
 
     public void createUser(List<String> user, UserFirebaseDataSource.UserCreationListener listener) {
         userFirebaseDataSource.createUserAuth(user, new UserFirebaseDataSource.UserCreationListener() {
@@ -41,6 +54,10 @@ public class UserRepository {
                 listener.onFailure(errorMessage);
             }
         });
+    }
+
+    public void logoutUser(){
+        userFirebaseDataSource.logoutUser();
     }
 
     public void updateUser(User user) {

@@ -64,9 +64,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="30dp"
                     android:layout_marginTop="5dp"
-                    app:cardElevation="20dp">
+                    app:cardElevation="0dp">
                     <EditText
                         android:id="@+id/registerName"
                         android:layout_width="match_parent"
@@ -94,9 +94,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="30dp"
                     android:layout_marginTop="5dp"
-                    app:cardElevation="20dp">
+                    app:cardElevation="0dp">
                     <EditText
                         android:id="@+id/registerEmail"
                         android:inputType="textEmailAddress"
@@ -124,9 +124,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="30dp"
                     android:layout_marginTop="5dp"
-                    app:cardElevation="20dp">
+                    app:cardElevation="0dp">
                     <EditText
                         android:id="@+id/registerPassword"
                         android:layout_width="match_parent"
@@ -154,9 +154,9 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    app:cardCornerRadius="12dp"
+                    app:cardCornerRadius="30dp"
                     android:layout_marginTop="5dp"
-                    app:cardElevation="20dp">
+                    app:cardElevation="0dp">
                     <EditText
                         android:id="@+id/confirmPassword"
                         android:layout_width="match_parent"
@@ -221,7 +221,7 @@
                 android:textColor="@color/white"
                 android:drawableRight="@drawable/ic_arrow_end_24"
                 android:textSize="18sp"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="30dp" />
 
 
         </LinearLayout>

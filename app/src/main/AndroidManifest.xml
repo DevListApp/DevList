@@ -13,8 +13,13 @@
         android:theme="@style/Theme.DevList"
         tools:targetApi="31">
         <activity
+            android:name=".screens.profile.Profile"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".screens.splash_screens.SplashScreen1"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,27 +28,35 @@
         </activity>
         <activity
             android:name=".screens.dashboard.Dashboard"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.splash_screens.Bem_vindo"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.splash_screens.SplashScreen2"
-            android:exported="false" />
-        <activity
-            android:name=".screens.dashboard.Home"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".auth.ResetPassword"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".screens.user.RegisterUser"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".auth.LoginUser"
-            android:exported="false" />
-        <activity android:name=".screens.task.CreateTask"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".screens.task.CreateTask"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".screens.task.UpdateTask"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#130139</color>
+    <color name="purple_data">#28066F</color>
     <color name="gray">#D9D9D9</color>
     <color name="gray2">#B8B8B8</color>
     <color name="green">#5FED9C</color>
     <color name="orange">#FF5935</color>
+    <color name="yellow">#FFCC00</color>
+    <color name="gray_task">#EDECEC</color>
 </resources>

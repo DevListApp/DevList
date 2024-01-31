@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
-                android:text="Bem - vindo (a)!"
+                android:text="Bem - vindo(a)!"
                 android:textColor="@color/purple"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -49,26 +49,114 @@
                 android:layout_height="match_parent"
                 android:text="Usuário teste"
                 android:textColor="@color/purple"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:id="@+id/userName"/>
         </LinearLayout>
     </LinearLayout>
 
-<!--    documentação: https://m2.material.io/components/bottom-navigation/android#using-bottom-navigation-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="110dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/purple"
+            android:padding="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Tarefas"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewDashboard"
+            android:paddingHorizontal="30dp"
+            android:background="@color/gray2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/menu_fundo">
+        android:background="@drawable/menu_fundo"
+        android:orientation="horizontal"
+        android:gravity="center">
 
+        <ImageButton
+            android:id="@+id/homePageBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/icon_home"
+            android:text=""
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"/>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/menu_bottom"
-            android:layout_width="match_parent"
+        <!--<Button
+            android:id="@+id/analizePageBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:height="10dp"
+            android:background="@drawable/icons_list"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/transparent"
+            android:text="." />-->
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="1dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:menu="@menu/menu_itens"
-            app:itemIconSize="25dp"
-            android:animationCache="false"/>
+            android:backgroundTint="@color/green"
+            app:cardCornerRadius="60dp"
+            android:layout_margin="5dp"
+            app:cardElevation="0dp">
+
+            <ImageButton
+                android:id="@+id/btnAddTarefa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/green"
+                android:src="@drawable/ic_add_24"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </androidx.cardview.widget.CardView>
+
+        <!--<Space
+            android:layout_width="10dp"
+            android:layout_height="1dp"/>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:height="10dp"
+            android:background="@drawable/icon_notification"
+            android:backgroundTint="@color/transparent"
+            android:textColor="@color/transparent"
+            android:text="." /> -->
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="1dp"/>
+
+        <ImageButton
+            android:id="@+id/btnProfile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:height="10dp"
+            android:background="@drawable/icon_user"
+            android:backgroundTint="@color/purple"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
     </LinearLayout>

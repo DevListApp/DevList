@@ -16,9 +16,9 @@ public class User {
 
     // Construtor com parâmetros para inicializar os atributos ao criar uma instância
     public User(FirebaseUser firebaseUser) {
+        this.name = firebaseUser.getDisplayName();
         this.uid = firebaseUser.getUid();
         this.email = firebaseUser.getEmail();
-        this.name = firebaseUser.getDisplayName();
         // Outras inicializações se necessário
     }
 

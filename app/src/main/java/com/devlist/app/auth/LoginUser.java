@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,11 +16,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.devlist.app.screens.dashboard.Dashboard;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
-import com.devlist.app.screens.tasks.ListTasks;
 import com.devlist.app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,16 +30,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginUser extends AppCompatActivity {
 
-    //cria as variáveis
+    //cria as variáveis e vincular com os componentes
     EditText loginEmail, loginPassword;
     Button btnBackLogin;
     Button btnLoginUser;
     Button btnForgoutUser;
     FirebaseAuth authUser = FirebaseAuth.getInstance(); //instacia auth do firebase
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_login_user); //Carrega essa activity
 
         //Muda cor do status bar se estiver na activity de login
@@ -50,21 +53,12 @@ public class LoginUser extends AppCompatActivity {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
-
-
-
-        FirebaseUser currentUser = authUser.getCurrentUser();
-        // Se o usuário estiver autenticado
-        if(currentUser != null) {
-            startActivity(new Intent(this, Dashboard.class));
-            finish();
-        }
-
         btnBackLogin = findViewById(R.id.btnBackLogin);//atribuí as variáveis aos compoenntes
         btnLoginUser = findViewById(R.id.btnLoginUser);
         loginEmail = findViewById(R.id.loginEmail);
         loginPassword = findViewById(R.id.loginPassword);
         btnForgoutUser = findViewById(R.id.btnForgoutUser);
+        progressBar = findViewById(R.id.splash_login);
 
         btnBackLogin.setOnClickListener(new View.OnClickListener() { //leitor de eventos no botão voltar <-
             @Override
@@ -79,6 +73,9 @@ public class LoginUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {   //função de click
                 if(checkAllFields()) {
+                    btnLoginUser.setEnabled(false);
+                    btnLoginUser.setText("");
+                    progressBar.setVisibility(View.VISIBLE);
                     authLoginUser(loginEmail.getText().toString(), loginPassword.getText().toString()); //chama e passa os paremetros para a função de fazer login
                 }
             }
@@ -114,6 +111,9 @@ public class LoginUser extends AppCompatActivity {
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    btnLoginUser.setEnabled(true);
+                    btnLoginUser.setText("Entrar");
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithEmail:success");
