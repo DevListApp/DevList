@@ -10,7 +10,7 @@ O **DevList** é um aplicativo dedicado a simplificar a gestão de tarefas e che
 
 ### Origem do Nome “DevList”
 
-![Untitled](../app/logo/logo_dev_list.png)
+![Untitled](logo/logo_dev_list.png)
 
 “Dev” significa “developer”, desenvolvedor em inglês. Apesar do nome se basear em um profissional de computação, a ideia do app é ser utilizada por todos, não somente por desenvolvedores. Foi pensado este nome, pois é para ser um aplicativo onde os processos podem ser mais otimizados e a pode ter uma boa experiência do usuário.
 
