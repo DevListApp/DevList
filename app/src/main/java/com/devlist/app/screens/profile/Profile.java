@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.devlist.app.R;
 import com.devlist.app.data.repositories.UserRepository;
 import com.devlist.app.screens.dashboard.Dashboard;
+import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -61,6 +62,9 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userRepository.logoutUser();
+                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
+                startActivity(intent);
+                finish();
             }
         });
 

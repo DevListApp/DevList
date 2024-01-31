@@ -205,7 +205,7 @@ public class UpdateTask extends AppCompatActivity {
     public Task getInformationTask(){
         int idPrioridadeSelecionada = radioGroup.getCheckedRadioButtonId();
         RadioButton prioridadeSelecionada = findViewById(idPrioridadeSelecionada);
-        taskUpdate = new Task(selectedTask.getId(), titleTask.getText().toString(), descriptionTask.getText().toString(), dataInicial, dataFinal, getCodigoPrioridade(prioridadeSelecionada.getText().toString()), selectedTask.getAuth(), selectedTask.getConcluido());
+        taskUpdate = new Task(selectedTask.getId(), titleTask.getText().toString(), descriptionTask.getText().toString(), dataInicial, dataFinal, getCodigoPrioridade(prioridadeSelecionada.getText().toString()), selectedTask.getAuth(), selectedTask.getConcluido(), selectedTask.getResumoCount(), selectedTask.getResumoDate());
         return  taskUpdate;
     }
     private int getCodigoPrioridade(String prioridade) {

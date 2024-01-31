@@ -148,5 +148,5 @@ public class Task implements Parcelable {
     }
     public int getResumoCount() {
         return resumoCount;
-
+    }
 }
