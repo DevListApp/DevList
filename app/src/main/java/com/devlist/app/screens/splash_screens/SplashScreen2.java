@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.fragment.app.FragmentManager;
 
 import com.devlist.app.R;
 
 public class SplashScreen2 extends AppCompatActivity {
+    private Button showMenu;
 
     // Método chamado ao criar a atividade
     @Override
@@ -20,6 +23,15 @@ public class SplashScreen2 extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen2);
         // Chamar método para exibir o BottomSheet (tela de boas-vindas)
         exibirBottomSheet();
+
+        showMenu = findViewById(R.id.showMenu);
+
+        showMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exibirBottomSheet();
+            }
+        });
     }
 
     // Método para exibir o BottomSheet (tela de boas-vindas)
