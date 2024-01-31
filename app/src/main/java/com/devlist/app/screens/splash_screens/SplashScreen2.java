@@ -1,6 +1,8 @@
 package com.devlist.app.screens.splash_screens;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentManager;
@@ -14,6 +16,7 @@ public class SplashScreen2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Definir o layout da atividade como a segunda tela de introdução
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_splash_screen2);
         // Chamar método para exibir o BottomSheet (tela de boas-vindas)
         exibirBottomSheet();

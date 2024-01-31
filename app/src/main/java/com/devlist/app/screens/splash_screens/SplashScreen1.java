@@ -1,6 +1,7 @@
 package com.devlist.app.screens.splash_screens;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class SplashScreen1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_splash_screen1);
 
         splash_carregamento = findViewById(R.id.splash_carregamento);

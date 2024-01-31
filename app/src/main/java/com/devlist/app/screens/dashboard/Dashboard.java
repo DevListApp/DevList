@@ -4,6 +4,7 @@ package com.devlist.app.screens.dashboard;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -41,6 +42,7 @@ public class Dashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_dashboard);
 
         userName = findViewById(R.id.userName);

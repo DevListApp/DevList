@@ -2,6 +2,7 @@ package com.devlist.app.screens.task;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -52,6 +53,7 @@ public class CreateTask extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_criar_tarefa);
 
         // INTERLIGANDO AS DECLARACOES DAS ID'S DOS BOTOES/INPUT DO XML PARA O .JAVA
