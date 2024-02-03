@@ -49,22 +49,19 @@ public class UserFirebaseDataSource {
             .addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "createUserWithEmail:failure", e.getCause());
-                    // Tratar o erro de senha fraca aqui
-                    if (e.getCause() instanceof FirebaseAuthWeakPasswordException) {
+                    Log.e(TAG, "Solicitação de criação de usuário com erro! " + e);
+
+                    if (e instanceof FirebaseAuthWeakPasswordException) {
                         listener.onFailure("Senha fraca. A senha deve ter pelo menos 6 caracteres.");
-
-                    } else if (e.getCause() instanceof FirebaseAuthInvalidCredentialsException) {
-                        listener.onFailure("Insira um email válido");
-
-                    } else if (e.getCause() instanceof FirebaseAuthUserCollisionException){
+                    } else if (e instanceof FirebaseAuthUserCollisionException) {
                         listener.onFailure("Email já cadastrado!");
-                    }
-                    else {
+                    } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                        listener.onFailure("Insira um email válido");
+                    } else {
                         listener.onFailure("Falha ao cadastrar usuário.");
-
                     }
                 }
+
             });
     }
 
