@@ -1,10 +1,6 @@
 package com.devlist.app.data.repositories;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.util.Log;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.devlist.app.data.models.Task;
@@ -12,10 +8,6 @@ import com.devlist.app.data.sources.TaskFirebaseDataSource;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class TaskRepository {
     private TaskFirebaseDataSource taskFirebaseDataSource;

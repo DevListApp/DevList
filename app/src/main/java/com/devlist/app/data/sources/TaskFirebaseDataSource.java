@@ -1,12 +1,9 @@
 package com.devlist.app.data.sources;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import com.devlist.app.data.models.Task;
 import com.google.android.gms.tasks.OnFailureListener;

@@ -54,30 +54,6 @@ public class ProfileViewModel extends ViewModel {
         return userId;
     }
 
-//    public void filterResumo(OnCountRetrievedListener listener) {
-//        CollectionReference storiesCollection = FirebaseFirestore.getInstance().collection("tasks");
-//        Query query = storiesCollection.whereEqualTo("auth", userId)
-//                .whereEqualTo("resumoDate", dataAtualString);
-//
-//        // Executa a consulta
-//        query.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                QuerySnapshot querySnapshot = task.getResult();
-//                if (querySnapshot != null) {
-//                    int count = querySnapshot.size();
-//                    System.out.println("Número de documentos retornados: " + count);
-//                    listener.onCountRetrieved(count);
-//                } else {
-//                    System.out.println("Nenhum documento correspondente encontrado.");
-//                }
-//            } else {
-//                Exception exception = task.getException();
-//                if (exception != null) {
-//                    System.out.println("Erro ao executar a consulta: " + exception.getMessage());
-//                }
-//            }
-//        });
-//    }
 
 
     public String loadUser(){

@@ -103,11 +103,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             public void onClick(View v) {
                 int status = task.getConcluido() > 0 ? 0 : 1;
                 task.setConcluido(status);
-//                task.setResumoDate(dataFinalizacao);
-
-                // Atualize a propriedade 'resumoCount' de acordo com a lógica desejada
-//                task.setResumoCount(
-//                        task.getResumoCount() == 0 ? 1 : 0);
 
                 if(task.getResumoCount() != 0 ){
                     task.setResumoCount(0);
