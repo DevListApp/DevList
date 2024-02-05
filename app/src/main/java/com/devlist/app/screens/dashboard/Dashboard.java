@@ -5,9 +5,7 @@ import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,10 +23,8 @@ import com.devlist.app.data.repositories.UserRepository;
 import com.devlist.app.screens.profile.Profile;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.devlist.app.screens.task.CreateTask;
-import com.devlist.app.screens.task.UpdateTask;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.devlist.app.screens.task.EditTask;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +63,7 @@ public class Dashboard extends AppCompatActivity {
         viewModel.getSelectedTask().observe(this, selectedTask -> {
             if (selectedTask != null) {
                 // Iniciar a nova atividade com os dados da tarefa selecionada
-                Intent intent = new Intent(getApplicationContext(), UpdateTask.class);
+                Intent intent = new Intent(getApplicationContext(), EditTask.class);
                 intent.putExtra("task_data", selectedTask);
                 startActivity(intent);
                 // Limpar a tarefa selecionada após a navegação
@@ -109,7 +105,6 @@ public class Dashboard extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                userRepository.logoutUser();
                 Intent intent = new Intent(getApplicationContext(), Profile.class);
                 startActivity(intent);
                 finish();

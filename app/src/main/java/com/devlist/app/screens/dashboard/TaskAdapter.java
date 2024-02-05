@@ -1,13 +1,8 @@
 package com.devlist.app.screens.dashboard;
 
-import static android.view.View.resolveSizeAndState;
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +20,6 @@ import com.devlist.app.R;
 import com.devlist.app.data.models.Task;
 import com.devlist.app.data.repositories.TaskRepository;
 import com.devlist.app.data.sources.TaskFirebaseDataSource;
-import com.devlist.app.screens.task.UpdateTask;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

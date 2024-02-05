@@ -54,7 +54,7 @@
             android:name=".screens.task.CreateTask"
             android:exported="false"
             android:screenOrientation="portrait"/>
-        <activity android:name=".screens.task.UpdateTask"
+        <activity android:name=".screens.task.EditTask"
             android:exported="false"
             android:screenOrientation="portrait"/>
     </application>

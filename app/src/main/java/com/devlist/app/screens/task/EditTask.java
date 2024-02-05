@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.devlist.app.R;
@@ -22,14 +21,13 @@ import com.devlist.app.data.models.Task;
 import com.devlist.app.data.repositories.TaskRepository;
 import com.devlist.app.data.sources.TaskFirebaseDataSource;
 import com.devlist.app.screens.dashboard.Dashboard;
-import com.devlist.app.screens.dashboard.TaskAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class UpdateTask extends AppCompatActivity {
+public class EditTask extends AppCompatActivity {
     private ProgressBar progressBar, progressBarRemove;
     private Button btnBackEditTask, btnUpdateTask, btnRemoveTask;
     private EditText titleTask, descriptionTask, dt_start_scheduled, dt_end_scheduled;
@@ -117,7 +115,7 @@ public class UpdateTask extends AppCompatActivity {
                 taskRepository.updateTask(getInformationTask(), new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(UpdateTask.this, "Sucesso ao atualizar tarefa", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditTask.this, "Sucesso ao atualizar tarefa", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                         startActivity(intent);
                         finish();
@@ -125,7 +123,7 @@ public class UpdateTask extends AppCompatActivity {
                     }
                     @Override
                     public void onFailure(String errorMessage) {
-                        Toast.makeText(UpdateTask.this, errorMessage, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditTask.this, errorMessage, Toast.LENGTH_SHORT).show();
                         btnUpdateTask.setEnabled(true);
                         btnUpdateTask.setText("Atualizar");
                         progressBar.setVisibility(View.INVISIBLE);
@@ -143,7 +141,7 @@ public class UpdateTask extends AppCompatActivity {
                 taskRepository.deleteTask(selectedTask.getId(), new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {
-                        Toast.makeText(UpdateTask.this, "Tarefa excluída com sucesso!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditTask.this, "Tarefa excluída com sucesso!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                         startActivity(intent);
                         finish();
@@ -154,7 +152,7 @@ public class UpdateTask extends AppCompatActivity {
                         btnRemoveTask.setEnabled(false);
                         btnRemoveTask.setText("Remover");
                         progressBarRemove.setVisibility(View.INVISIBLE);
-                        Toast.makeText(UpdateTask.this, errorMessage, Toast.LENGTH_SHORT);
+                        Toast.makeText(EditTask.this, errorMessage, Toast.LENGTH_SHORT);
                     }
                 });
             }
@@ -185,7 +183,7 @@ public class UpdateTask extends AppCompatActivity {
         int month = cldr.get(Calendar.MONTH);
         int year = cldr.get(Calendar.YEAR);
         // date picker dialog
-        picker = new DatePickerDialog(UpdateTask.this,
+        picker = new DatePickerDialog(EditTask.this,
                 new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {

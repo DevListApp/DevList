@@ -42,7 +42,6 @@ public class Bem_vindo extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 // Fechar a tela de boas-vindas e abrir a tela de login
-                dismiss();
                 abrirLogin();
                 if (getActivity() != null) {
                     getActivity().finish();
@@ -55,7 +54,6 @@ public class Bem_vindo extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 // Fechar a tela de boas-vindas e abrir a tela de cadastro
-                dismiss();
                 abrirCadastro();
                 if (getActivity() != null) {
                     getActivity().finish();
