@@ -34,6 +34,7 @@ public class Profile extends AppCompatActivity {
     private FirebaseAuth userAuth;
     private ProfileViewModel viewModel;
 
+    // Método chamado quando a atividade é criada
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,62 +42,64 @@ public class Profile extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_profile);
 
+        // Inicialização dos elementos de UI
         userName = findViewById(R.id.userName);
         inputEmail = findViewById(R.id.inputEmail);
         btn_sair = findViewById(R.id.btn_sair);
         inputResumo = findViewById(R.id.inputResumo);
         btnBackProfile = findViewById(R.id.btnBackProfile);
 
+        // Inicialização do ViewModel e do repositório de usuário
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         userRepository = new UserRepository();
-        userAuth = FirebaseAuth.getInstance(); // Initialize FirebaseAuth
+        userAuth = FirebaseAuth.getInstance(); // Inicialização do FirebaseAuth
 
         FirebaseUser user  = userAuth.getCurrentUser();
         String userId = user.getUid();
 
-        // Chamar a função para obter o resumo dos documentos
-        filterResumo(userId);
-
+        // Chamar a função para carregar e exibir os dados do usuário
         userName.setText(viewModel.loadUser());
         inputEmail.setText(viewModel.loadEmail());
 
+        // OnClickListener para o botão de sair
         btn_sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userRepository.logoutUser();
-                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
+                userRepository.logoutUser(); // Desconectar o usuário
+                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class); // Iniciar a tela de splash
                 startActivity(intent);
-                finish();
+                finish(); // Finalizar a atividade atual
             }
         });
 
+        // OnClickListener para o botão de voltar para o dashboard
         btnBackProfile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+                Intent intent = new Intent(getApplicationContext(), Dashboard.class); // Iniciar o dashboard
                 startActivity(intent);
-                finish();
+                finish(); // Finalizar a atividade atual
             }
         });
     }
 
+    // Método para filtrar e exibir o resumo das tarefas do usuário
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void filterResumo(String userId) {
-        LocalDate dataAtual = LocalDate.now();
+        LocalDate dataAtual = LocalDate.now(); // Obter a data atual
         String dataAtualString = dataAtual.toString();
-        CollectionReference storiesCollection = FirebaseFirestore.getInstance().collection("tasks");
+        CollectionReference storiesCollection = FirebaseFirestore.getInstance().collection("tasks"); // Obter a referência da coleção "tasks"
         Query query = storiesCollection.whereEqualTo("auth", userId)
                 .whereEqualTo("resumoDate", dataAtualString)
                 .whereEqualTo("resumoCount", 1);
 
-        // Executa a consulta
+        // Executar a consulta no Firestore
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 QuerySnapshot querySnapshot = task.getResult();
                 if (querySnapshot != null) {
-                    int count = querySnapshot.size();
-                    System.out.println("Número de tarefas concluídas hoje: " + count);
-                    inputResumo.setText("Número de tarefas concluídas hoje: " + count);
+                    int count = querySnapshot.size(); // Obter o número de tarefas concluídas hoje
+                    inputResumo.setText("Número de tarefas concluídas hoje: " + count); // Exibir o resumo na interface do usuário
                 } else {
                     System.out.println("Nenhum documento correspondente encontrado.");
                 }

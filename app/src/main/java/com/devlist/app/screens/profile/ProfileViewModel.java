@@ -26,10 +26,13 @@ public class ProfileViewModel extends ViewModel {
     private UserRepository userRepository;
 
     public ProfileViewModel(){
-        userRepository = new UserRepository();
+        userRepository = new UserRepository(); // Inicialização do repositório do usuário
     }
     private DocumentReference firebaseFirestore;
-    /*LiveData é uma classe do Android Architecture Components que foi projetada para ser observada por outras partes do seu aplicativo, como componentes de interface do usuário (UI). Essa classe é usada para criar objetos observáveis que podem ser atualizados e notificar automaticamente os observadores sobre mudanças nos dados.*/
+    /*
+    LiveData é uma classe do Android Architecture Components que foi projetada para ser observada por outras partes do seu aplicativo, como componentes de interface do usuário (UI).
+    Essa classe é usada para criar objetos observáveis que podem ser atualizados e notificar automaticamente os observadores sobre mudanças nos dados.
+    */
     public LiveData<String> getUser() {
         if(userName == null){
             userName = new MutableLiveData<>();
@@ -54,35 +57,18 @@ public class ProfileViewModel extends ViewModel {
         return userId;
     }
 
-//    public void filterResumo(OnCountRetrievedListener listener) {
-//        CollectionReference storiesCollection = FirebaseFirestore.getInstance().collection("tasks");
-//        Query query = storiesCollection.whereEqualTo("auth", userId)
-//                .whereEqualTo("resumoDate", dataAtualString);
-//
-//        // Executa a consulta
-//        query.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                QuerySnapshot querySnapshot = task.getResult();
-//                if (querySnapshot != null) {
-//                    int count = querySnapshot.size();
-//                    System.out.println("Número de documentos retornados: " + count);
-//                    listener.onCountRetrieved(count);
-//                } else {
-//                    System.out.println("Nenhum documento correspondente encontrado.");
-//                }
-//            } else {
-//                Exception exception = task.getException();
-//                if (exception != null) {
-//                    System.out.println("Erro ao executar a consulta: " + exception.getMessage());
-//                }
-//            }
-//        });
-//    }
-
-
+    // Método para carregar o nome do usuário
     public String loadUser(){
         return userRepository.getUser().getName();
     }
-    public String loadEmail(){return userRepository.getUser().getEmail();}
-    public String loadId(){return userRepository.getUser().getId();}
+
+    // Método para carregar o e-mail do usuário
+    public String loadEmail(){
+        return userRepository.getUser().getEmail();
+    }
+
+    // Método para carregar o ID do usuário
+    public String loadId(){
+        return userRepository.getUser().getId();
+    }
 }

@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.devlist.app.R;
@@ -22,7 +21,6 @@ import com.devlist.app.data.models.Task;
 import com.devlist.app.data.repositories.TaskRepository;
 import com.devlist.app.data.sources.TaskFirebaseDataSource;
 import com.devlist.app.screens.dashboard.Dashboard;
-import com.devlist.app.screens.dashboard.TaskAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -46,6 +44,7 @@ public class UpdateTask extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         setContentView(R.layout.activity_update_task);
 
+        // Vinculando os elementos do layout XML com as variáveis Java
         btnBackEditTask = findViewById(R.id.btnBackEditTask);
         titleTask = findViewById(R.id.taskEditTitulo);
         descriptionTask = findViewById(R.id.taskEditNote);
@@ -60,6 +59,7 @@ public class UpdateTask extends AppCompatActivity {
         radioGroup = findViewById(R.id.taskUpdatePriority);
         btnRemoveTask = findViewById(R.id.btnRemoveTask);
 
+        // Configurando o botão de voltar para a tela anterior
         btnBackEditTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,12 +69,12 @@ public class UpdateTask extends AppCompatActivity {
             }
         });
 
-        // Recuperar dados do intent
+        // Recuperando dados da tarefa do intent
         Intent intent = getIntent();
         selectedTask = intent.getParcelableExtra("task_data");
         taskRepository = new TaskRepository();
 
-        // Exibir os dados da tarefa na nova atividade
+        // Exibindo os dados da tarefa na atividade
         if (selectedTask != null) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             titleTask.setText(selectedTask.getTitulo());
@@ -92,13 +92,14 @@ public class UpdateTask extends AppCompatActivity {
             }
         }
 
+        // Configurando o botão de atualizar a tarefa
         btnUpdateTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btnUpdateTask.setEnabled(false);
                 btnUpdateTask.setText("");
                 progressBar.setVisibility(View.VISIBLE);
-                // VERIFICA SE TODOS OS CAMPOS ESTÃO PREENCHIDOS
+                // Verificando se todos os campos estão preenchidos
                 if (titleTask.getText().toString().isEmpty() || descriptionTask.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                     btnUpdateTask.setEnabled(true);
@@ -106,7 +107,7 @@ public class UpdateTask extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     return ;
                 }
-                // VERIFICA SE DATA INICIAL É MAIOR QUE DATA FINAL
+                // Verificando se a data inicial é maior que a data final
                 if(dataInicial.after(dataFinal)) {
                     Toast.makeText(getApplicationContext(), "Datas inválidas!", Toast.LENGTH_SHORT).show();
                     btnUpdateTask.setEnabled(true);
@@ -114,6 +115,7 @@ public class UpdateTask extends AppCompatActivity {
                     progressBar.setVisibility(View.INVISIBLE);
                     return;
                 }
+                // Atualizando a tarefa no repositório
                 taskRepository.updateTask(getInformationTask(), new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {
@@ -121,7 +123,6 @@ public class UpdateTask extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                         startActivity(intent);
                         finish();
-
                     }
                     @Override
                     public void onFailure(String errorMessage) {
@@ -134,12 +135,14 @@ public class UpdateTask extends AppCompatActivity {
             }
         });
 
+        // Configurando o botão de remover a tarefa
         btnRemoveTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btnRemoveTask.setEnabled(true);
                 btnRemoveTask.setText("");
                 progressBarRemove.setVisibility(View.VISIBLE);
+                // Removendo a tarefa do repositório
                 taskRepository.deleteTask(selectedTask.getId(), new TaskFirebaseDataSource.TaskListener() {
                     @Override
                     public void onSuccess() {
@@ -148,7 +151,6 @@ public class UpdateTask extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-
                     @Override
                     public void onFailure(String errorMessage) {
                         btnRemoveTask.setEnabled(false);
@@ -160,6 +162,7 @@ public class UpdateTask extends AppCompatActivity {
             }
         });
 
+        // Configurando os campos de data para exibirem o DatePickerDialog
         dt_start_scheduled.setInputType(InputType.TYPE_NULL);
         dt_start_scheduled.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,6 +182,8 @@ public class UpdateTask extends AppCompatActivity {
         });
 
     }
+
+    // Método para exibir o DatePickerDialog
     public void showDate(EditText dateButton){
         Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
@@ -204,18 +209,19 @@ public class UpdateTask extends AppCompatActivity {
         picker.show();
     };
 
+    // Método para obter os detalhes da tarefa a ser atualizada
     public Task getInformationTask(){
         int idPrioridadeSelecionada = radioGroup.getCheckedRadioButtonId();
         RadioButton prioridadeSelecionada = findViewById(idPrioridadeSelecionada);
         taskUpdate = new Task(selectedTask.getId(), titleTask.getText().toString(), descriptionTask.getText().toString(), dataInicial, dataFinal, getCodigoPrioridade(prioridadeSelecionada.getText().toString()), selectedTask.getAuth(), selectedTask.getConcluido(), selectedTask.getResumoCount(), selectedTask.getResumoDate());
         return  taskUpdate;
     }
+
+    // Método para obter o código da prioridade da tarefa
     private int getCodigoPrioridade(String prioridade) {
-        // RETORNA QUAL É A PRIORIDADE ESCOLHIDA
         if ("Alta".equals(prioridade)) return 1;
         if ("Média".equals(prioridade)) return 2;
         if ("Baixa".equals(prioridade)) return 3;
         return 0;
     }
-
 }

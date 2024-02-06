@@ -30,7 +30,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -95,11 +94,13 @@ public class CreateTask extends AppCompatActivity {
         edtHoraFim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               showDate(edtHoraFim);
+                showDate(edtHoraFim);
             }
 
         });
     }
+
+    // Método para exibir o DatePickerDialog
     public void showDate(EditText dateButton){
         Calendar cldr = Calendar.getInstance();
         int day = cldr.get(Calendar.DAY_OF_MONTH);
@@ -125,6 +126,7 @@ public class CreateTask extends AppCompatActivity {
         picker.show();
     };
 
+    // Método para adicionar uma tarefa
     private void adicionarTarefa(String titulo, String notas, Date dataInicio, Date dataFinal) {
         taskRepository = new TaskRepository();
         // OBTEM A PRIORIDADE ESCOLHIDA
@@ -145,11 +147,9 @@ public class CreateTask extends AppCompatActivity {
         btnAdicionarTarefa.setText("");
         progressBar.setVisibility(View.VISIBLE);
 
-        // LOG TESTAR
-        Log.d("DEBUG", "Prioridade Selecionada: " + prioridadeSelecionada.getText().toString());
-
         resumoCount = 0;
         resumoDate = "";
+
         // CHAMANDO INSTANCIA DA CLASSE TAREFAS
         Task tarefa = new Task("", titulo, notas, dataInicio, dataFinal, getCodigoPrioridade(prioridadeSelecionada.getText().toString()), getUid(), 0,resumoCount, resumoDate);
         taskRepository.createTask(tarefa , new TaskFirebaseDataSource.TaskListener(){
@@ -168,20 +168,18 @@ public class CreateTask extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
+
+    // Método para obter o UID do usuário atualmente autenticado
     public String getUid(){
-        // PEGANDO O UID DO USUÁRIO
         myAuth = FirebaseAuth.getInstance();
         FirebaseUser user  = myAuth.getCurrentUser();
         String userId = user.getUid();
         return userId;
     }
 
+    // Método para obter o código da prioridade da tarefa
     private int getCodigoPrioridade(String prioridade) {
-        // RETORNA QUAL É A PRIORIDADE ESCOLHIDA
         if ("Alta".equals(prioridade)) return 1;
         if ("Média".equals(prioridade)) return 2;
         if ("Baixa".equals(prioridade)) return 3;
