@@ -9,8 +9,7 @@
 O **DevList** é um aplicativo dedicado a simplificar a gestão de tarefas e checklists para todos os usuários. Desenvolvido com praticidade e eficiência em mente, o DevList oferece uma interface intuitiva para criar, organizar e monitorar listas de tarefas, proporcionando uma experiência otimizada para o dia a dia.
 
 ### Origem do Nome “DevList”
-
-![Untitled](app/logo/logo_dev_list.png)
+<img style="width: 150px" src="app/src/main/ic_launcher-playstore.png">
 
 “Dev” significa “developer”, desenvolvedor em inglês. Apesar do nome se basear em um profissional de computação, a ideia do app é ser utilizada por todos, não somente por desenvolvedores. Foi pensado este nome, pois é para ser um aplicativo onde os processos podem ser mais otimizados e a pode ter uma boa experiência do usuário.
 
