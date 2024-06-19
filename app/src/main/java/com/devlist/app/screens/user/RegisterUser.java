@@ -2,16 +2,23 @@
 package com.devlist.app.screens.user;
 
 // Declarações de importação para bibliotecas e classes necessárias
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.ColorStateList;
+import android.graphics.BlendMode;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.devlist.app.R;
@@ -27,6 +34,8 @@ public class RegisterUser extends AppCompatActivity {
     // Declaração de elementos de interface do usuário (UI)
     Button btnBackRegister, btnRegisterUser, btnViewLogin;
     EditText registerName, registerEmail, registerPassword, confirmPassword;
+    ProgressBar determinateBar;
+//    progress_strong_password -> variável que contem o valor da barra de progresso
 
     // Anotação indicando que o código a seguir pode ignorar um erro de lint específico
     @SuppressLint("MissingInflatedId")
@@ -49,14 +58,18 @@ public class RegisterUser extends AppCompatActivity {
         registerEmail = findViewById(R.id.registerEmail);
         registerPassword = findViewById(R.id.registerPassword);
         confirmPassword = findViewById(R.id.confirmPassword);
+        //valor da poncentagem de senha forte
+        determinateBar = findViewById(R.id.determinateBar);
+        determinateBar.setMax(100);
+        determinateBar.setProgress(0);
 
         // Define um ouvinte de clique para o botão "Voltar"
         btnBackRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Cria um intent para navegar até SplashScreen2
-                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
-                // Inicia a atividade SplashScreen2
+               Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
+               // Inicia a atividade SplashScreen2
                 startActivity(intent);
                 finish();
             }
@@ -104,6 +117,57 @@ public class RegisterUser extends AppCompatActivity {
                 finish();
             }
         });
+
+        //métodos são chamados sempre que o texto deste TextView é alterado.
+        registerPassword.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String password = s.toString();
+                int strength = calculatePasswordStrength(password);
+                determinateBar.setProgress(strength);
+            }
+        });
+
+    }
+
+    private int calculatePasswordStrength(String password) {
+        int strength = 0;
+
+        // Critério 1: Tamanho da senha
+        if (password.length() >= 8) {
+            strength += 20; // Incrementa 20 pontos para tamanho suficiente
+        }
+
+        // Critério 2: Letras maiúsculas
+        if (password.matches(".*[A-Z].*")) {
+            strength += 20; // Incrementa 20 pontos para pelo menos uma letra maiúscula
+        }
+
+        // Critério 3: Letras minúsculas
+        if (password.matches(".*[a-z].*")) {
+            strength += 20; // Incrementa 20 pontos para pelo menos uma letra minúscula
+        }
+
+        // Critério 4: Dígitos
+        if (password.matches(".*\\d.*")) {
+            strength += 20; // Incrementa 20 pontos para pelo menos um dígito
+        }
+
+        // Critério 5: Caracteres especiais
+        if (password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*")) {
+            strength += 20; // Incrementa 20 pontos para pelo menos um caractere especial
+        }
+
+        return strength;
     }
 
     // Método para recuperar as informações do usuário dos campos de entrada e retornar como uma lista
@@ -148,4 +212,6 @@ public class RegisterUser extends AppCompatActivity {
             return true;
         }
     }
+
+
 }

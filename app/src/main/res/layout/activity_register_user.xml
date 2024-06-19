@@ -138,7 +138,8 @@
                         android:inputType="textPassword"
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/cardview_dark_background"
-                        android:hint="Sua melhor senha" />
+                        android:hint="Sua melhor senha"
+                        />
 
                 </androidx.cardview.widget.CardView>
 
@@ -169,17 +170,17 @@
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:hint="Confirme sua senha" />
-
                 </androidx.cardview.widget.CardView>
 
                 <ProgressBar
                     android:id="@+id/determinateBar"
-                    android:layout_marginTop="20dp"
-                    android:progressTint="@color/orange"
                     style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="8dp"
-                    android:progress="80"/>
+                    android:animationResolution="10"
+                    android:progress="0"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
