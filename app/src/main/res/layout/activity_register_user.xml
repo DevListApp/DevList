@@ -140,8 +140,53 @@
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:hint="Sua melhor senha"
                         />
-
                 </androidx.cardview.widget.CardView>
+
+                <ProgressBar
+                    android:id="@+id/determinateBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="10dp"
+                    android:indeterminate="false"
+                    android:maxHeight="10dip"
+                    android:minHeight="10dip"
+                    android:progress="0"
+                    app:cardCornerRadius="100dp"
+                    android:progressDrawable="@drawable/progress_bar"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Senha Fraca"
+                        android:textColor="@color/red"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Senha forte"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sua senha deve ter 8 ou mais caracteres, contendo: letras maiúsculas, minúsculas, caracteres especiais e números"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp">
+                </TextView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -172,38 +217,6 @@
                         android:hint="Confirme sua senha" />
                 </androidx.cardview.widget.CardView>
 
-                <ProgressBar
-                    android:id="@+id/determinateBar"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:animationResolution="10"
-                    android:progress="0"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Senha Fraca"
-                        android:textColor="@color/red"
-                        android:textSize="16sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="Senha forte"
-                        android:textAlignment="textEnd"
-                        android:textColor="@color/green"
-                        android:textSize="16sp" />
-                </LinearLayout>
 
             </LinearLayout>
 

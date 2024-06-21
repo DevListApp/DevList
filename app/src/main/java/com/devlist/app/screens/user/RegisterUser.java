@@ -35,6 +35,7 @@ public class RegisterUser extends AppCompatActivity {
     Button btnBackRegister, btnRegisterUser, btnViewLogin;
     EditText registerName, registerEmail, registerPassword, confirmPassword;
     ProgressBar determinateBar;
+    Boolean password_strong = false;
 //    progress_strong_password -> variável que contem o valor da barra de progresso
 
     // Anotação indicando que o código a seguir pode ignorar um erro de lint específico
@@ -83,23 +84,24 @@ public class RegisterUser extends AppCompatActivity {
                 if (checkPassword()) {
                     // Verifica se todos os campos obrigatórios estão preenchidos
                     if (checkAllFields()) {
-                        // Chama o método createUser de ViewModelUser, passando informações do usuário e um retorno de chamada
-                        viewModelUser.creatUser(userInformation(), new UserFirebaseDataSource.UserCreationListener() {
-                            @Override
-                            public void onSuccess() {
-                                // Manipula a criação bem-sucedida do usuário
-                                Toast.makeText(RegisterUser.this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), LoginUser.class);
-                                startActivity(intent);
-                                finish();
-                            }
+                        if (!password_strong) {
+                            Toast.makeText(RegisterUser.this, "Senha muito fraca.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            viewModelUser.creatUser(userInformation(), new UserFirebaseDataSource.UserCreationListener() {
+                                @Override
+                                public void onSuccess() {
+                                    Toast.makeText(RegisterUser.this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), LoginUser.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
 
-                            @Override
-                            public void onFailure(String errorMessage) {
-                                // Manipula a falha na criação do usuário e exibe uma mensagem de erro
-                                Toast.makeText(RegisterUser.this, errorMessage, Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                                @Override
+                                public void onFailure(String errorMessage) {
+                                    Toast.makeText(RegisterUser.this, errorMessage, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
                     }
                 }
             }
@@ -133,6 +135,12 @@ public class RegisterUser extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 String password = s.toString();
                 int strength = calculatePasswordStrength(password);
+                if(strength == 100) {
+                    password_strong = true;
+                }else{
+                    password_strong = false;
+                    registerPassword.setError("Senha fraca");
+                }
                 determinateBar.setProgress(strength);
             }
         });

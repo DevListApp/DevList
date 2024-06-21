@@ -1,31 +1,81 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
-    android:width="375dp"
-    android:height="11dp"
-    android:viewportWidth="375"
-    android:viewportHeight="11">
-    <path
-        android:pathData="M0.18 5.52c0-2.96 2.4-5.36 5.36-5.36h363.86c1.42 0 2.78 0.56 3.79 1.57 1.01 1.01 1.57 2.37 1.57 3.79v0c0 1.42-0.56 2.78-1.57 3.79-1.01 1.01-2.37 1.57-3.79 1.57h-363.86c-2.96 0-5.36-2.4-5.36-5.36z">
-        <aapt:attr name="android:fillColor">
+<!--<vector xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:aapt="http://schemas.android.com/aapt"-->
+<!--    android:width="375dp"-->
+<!--    android:height="11dp"-->
+<!--    android:viewportWidth="375"-->
+<!--    android:viewportHeight="11">-->
+<!--    <path-->
+<!--        android:pathData="M0.18 5.52c0-2.96 2.4-5.36 5.36-5.36h363.86c1.42 0 2.78 0.56 3.79 1.57 1.01 1.01 1.57 2.37 1.57 3.79v0c0 1.42-0.56 2.78-1.57 3.79-1.01 1.01-2.37 1.57-3.79 1.57h-363.86c-2.96 0-5.36-2.4-5.36-5.36z">-->
+<!--        <aapt:attr name="android:fillColor">-->
+<!--            <gradient-->
+<!--                android:type="linear"-->
+<!--                android:startX="0.18"-->
+<!--                android:startY="5.52"-->
+<!--                android:endX="374.76"-->
+<!--                android:endY="5.52">-->
+<!--                <item-->
+<!--                    android:color="#FFFF0000"-->
+<!--                    android:offset="0"/>-->
+<!--                <item-->
+<!--                    android:color="#FFFF9900"-->
+<!--                    android:offset="0.34"/>-->
+<!--                <item-->
+<!--                    android:color="#FFFF9900"-->
+<!--                    android:offset="0.63"/>-->
+<!--                <item-->
+<!--                    android:color="#FF00A337"-->
+<!--                    android:offset="1"/>-->
+<!--            </gradient>-->
+<!--        </aapt:attr>-->
+<!--    </path>-->
+<!--</vector>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="5dip" />
+<!--            <gradient-->
+<!--                android:angle="270"-->
+<!--                android:centerColor="@color/orange"-->
+<!--                android:centerY="0.75"-->
+<!--                android:endColor="@color/green"-->
+<!--                android:startColor="@color/red" />-->
             <gradient
-                android:type="linear"
-                android:startX="0.18"
-                android:startY="5.52"
-                android:endX="374.76"
-                android:endY="5.52">
-                <item
-                    android:color="#FFFF0000"
-                    android:offset="0"/>
-                <item
-                    android:color="#FFFF9900"
-                    android:offset="0.34"/>
-                <item
-                    android:color="#FFFF9900"
-                    android:offset="0.63"/>
-                <item
-                    android:color="#FF00A337"
-                    android:offset="1"/>
-            </gradient>
-        </aapt:attr>
-    </path>
-</vector>
+                android:angle="270"
+                android:endColor="@color/white"
+                android:startColor="@color/white" />
+
+        </shape>
+    </item>
+
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+                <gradient
+                    android:angle="270"
+                    android:centerColor="@color/purple"
+                    android:centerY="0.75"
+                    android:endColor="#a0ffcb00"
+                    android:startColor="#80ffd300" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+
+                <gradient
+                    android:startX="0.18"
+                    android:startY="5.52"
+                    android:endX="374.76"
+                    android:endY="5.52"
+                    android:startColor="@color/red"
+                    android:centerColor="@color/yellow"
+                    android:endColor="@color/green"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>
