@@ -188,15 +188,15 @@
                     android:textSize="16sp">
                 </TextView>
 
-<!--                <Button-->
-<!--                    android:id="@+id/btnpPasswordStrong"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:backgroundTint="@color/purple"-->
-<!--                    android:text="Gerar senha forte"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="16sp"-->
-<!--                    android:textStyle="bold" />-->
+                <Button
+                    android:id="@+id/btnpPasswordStrong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple"
+                    android:text="Gerar senha forte"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"

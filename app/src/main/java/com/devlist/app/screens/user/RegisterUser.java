@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.devlist.app.R;
 import com.devlist.app.auth.LoginUser;
+import com.devlist.app.screens.dashboard.Dashboard;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.devlist.app.data.sources.UserFirebaseDataSource;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -45,11 +46,7 @@ public class RegisterUser extends AppCompatActivity {
     EditText registerName, registerEmail, registerPassword, confirmPassword;
     ProgressBar determinateBar;
     Boolean password_strong = false;
-//    progress_strong_password -> variável que contem o valor da barra de progresso
-
-    // Anotação indicando que o código a seguir pode ignorar um erro de lint específico
     @SuppressLint("MissingInflatedId")
-    // Método chamado quando a atividade é criada
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +61,7 @@ public class RegisterUser extends AppCompatActivity {
         btnBackRegister = findViewById(R.id.btnBackRegister);
         btnRegisterUser = findViewById(R.id.btnRegisterUser);
         btnViewLogin = findViewById(R.id.btnViewLogin);
-//        btnpPasswordStrong = findViewById(R.id.btnpPasswordStrong);
+        btnpPasswordStrong = findViewById(R.id.btnpPasswordStrong);
         registerName = findViewById(R.id.registerName);
         registerEmail = findViewById(R.id.registerEmail);
         registerPassword = findViewById(R.id.registerPassword);
@@ -118,7 +115,7 @@ public class RegisterUser extends AppCompatActivity {
                                         @Override
                                         public void onSuccess() {
                                             Toast.makeText(RegisterUser.this, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(getApplicationContext(), LoginUser.class);
+                                            Intent intent = new Intent(getApplicationContext(), Dashboard.class);
                                             startActivity(intent);
                                             finish();
                                         }
@@ -180,18 +177,46 @@ public class RegisterUser extends AppCompatActivity {
                     password_strong = true;
                 }else{
                     password_strong = false;
-                    registerPassword.setError("Senha fraca");
                 }
                 determinateBar.setProgress(strength);
             }
         });
-//        btnpPasswordStrong.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
 
+        btnpPasswordStrong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RegisterUser.this, "Senha criada", Toast.LENGTH_SHORT).show();
+                registerPassword.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                confirmPassword.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                String senhaForte = gerarSenha(3);
+                registerPassword.setText(senhaForte);
+                confirmPassword.setText(senhaForte);
+            }
+        });
+
+    }
+
+    private static String gerarSenha(int qtdeMaximaCaracteres){
+
+        String[] numeros = {"0", "1", "b", "2", "4", "5", "6", "7", "8",
+                "9"};
+        String[] letrasMinusculas = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+                "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w",
+                "x", "y","z"};
+        String[] letrasMaiusculas = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        String[] especiais = {"+","-","/","*","_","!","@","$","%","&"};
+
+
+        StringBuilder senha = new StringBuilder();
+
+        for (int i = 0; i < qtdeMaximaCaracteres; i++) {
+            int numerosPosition = (int) (Math.random() * numeros.length);
+            int letrasMinusculasPosition = (int) (Math.random() * letrasMinusculas.length);
+            int letrasMaiusculasPosition = (int) (Math.random() * letrasMaiusculas.length);
+            int especiaisPosition = (int) (Math.random() * especiais.length);
+            senha.append(numeros[numerosPosition] + letrasMinusculas[letrasMinusculasPosition] + letrasMaiusculas[letrasMaiusculasPosition] + especiais[especiaisPosition]);
+        }
+        return senha.toString();
     }
 
     private int calculatePasswordStrength(String password) {
