@@ -60,6 +60,7 @@ public class Bem_vindo extends BottomSheetDialogFragment {
                 if (getActivity() != null) {
                     getActivity().finish();
                 }
+
             }
         });
 
