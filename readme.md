@@ -96,6 +96,12 @@ A presente Política de Privacidade contém informações sobre coleta, uso, arm
 
 O presente documento foi elaborado em conformidade com a Lei Geral de Proteçâo de Dados Pessoais (Lei 13.709/18), o Marco Civil da Internet (Lei 12.965/14) (e o Regulamento da UE n. 2016/6790). Ainda, o documento poderá ser atualizado em decorrência de eventual atualização normativa, razão pela qual se convida o usuário a consultar periodicamente esta seção.
 
+part. 2
+
+um botão para registro de usuário que realiza validações de senha e campos obrigatórios antes de exibi um alerta para aceitar os termos de uso para caso a senha não atender os critérios do app se atender os critérios do app ele cria um usuário com os dados fornecidos mostrando uma mensagem de falha ou sucesso no cadastro, caso recuse os termos o app alerta que é preciso aceitar para continuar o cadastro
+
+ 
+
 `SEÇÃO 2 - COMO RECOLHEMOS OS DADOS PESSOAIS DO USUÁRIO E DO VISITANTE?`
 
 Os dados pessoais do usuário e visitante são recolhidos pela plataforma da seguinte forma:
@@ -171,6 +177,19 @@ Diante da fusão ou venda da plataforma à outra empresa os dados dos usuários 
 
 Para a solução de controvérsias decorrentes do presente instrumento será aplicado integralmente o Direito brasileiro.
 Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.
+
+`SEÇÃO 10 – GERADOR DE SENHA FORTE`
+
+gerador de senha forte
+
+a medida que o usuário digita a senha o app verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo incrementa 20pts na forca da senha :
+* se a senha for maior ou igual a 8 
+* se a senha conter de letras maiúsculas  
+* se a senha conter letras minúsculas  
+* se a senha conter números 
+* se a senha conter caracteres especiais
+contendo todos esses critérios retornando 100 na forca da senha a senha é aceita e o cadastro feito, não contendo os critérios ele não retorna 100 e mostra um alerta de senha fraca
+outra opção é o usuário clicar num botão de gerador de senha forte, esta senha forte atingira todos os requisitos  
 
 ## Funcionalidades
 
