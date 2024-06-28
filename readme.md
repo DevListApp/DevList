@@ -180,15 +180,15 @@ Os eventuais litígios deverão ser apresentados no foro da comarca em que se en
 
 `SEÇÃO 10 – GERADOR DE SENHA FORTE`
 
-gerador de senha forte
+Gerador de senha forte
 
-a medida que o usuário digita a senha o app verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo incrementa 20pts na forca da senha :
-* se a senha for maior ou igual a 8 
-* se a senha conter de letras maiúsculas  
-* se a senha conter letras minúsculas  
-* se a senha conter números 
-* se a senha conter caracteres especiais
-contendo todos esses critérios retornando 100 na forca da senha a senha é aceita e o cadastro feito, não contendo os critérios ele não retorna 100 e mostra um alerta de senha fraca
+A medida que o usuário digita a senha o app verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo incrementa 20pts na forca da senha :
+* Se a senha for maior ou igual a 8 
+* Se a senha conter de letras maiúsculas  
+* Se a senha conter letras minúsculas  
+* Se a senha conter números 
+* Se a senha conter caracteres especiais
+Contendo todos esses critérios retornando 100 na forca da senha a senha é aceita e o cadastro feito, não contendo os critérios ele não retorna 100 e mostra um alerta de senha fraca
 outra opção é o usuário clicar num botão de gerador de senha forte, esta senha forte atingira todos os requisitos  
 
 ## Funcionalidades
