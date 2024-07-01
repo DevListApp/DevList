@@ -89,6 +89,10 @@ A função de validação de e-mail garante que apenas endereços de e-mail vál
 
 ## 8. Política de privacidade 
 
+### 9. Função gerador de senha forte
+
+Um gerador de senha forte é uma ferramenta essencial na proteção digital hoje em dia. Ele cria combinações complexas de letras maiúsculas, minúsculas, números e caracteres especiais, mais letras e numeros dificultando ataques de força bruta. Essas senhas são praticamente impossíveis de serem adivinhadas, proporcionando uma camada robusta de segurança para contas online e dados sensíveis. Além de garantir a segurança, um bom gerador de senha permite personalização, como ajuste de comprimento e tipos específicos de caracteres. Utilizar senhas fortes é fundamental para proteger informações contra hackers e garantir a privacidade pessoal e empresarial na era digital.
+
 ### POLÍTICA DE PRIVACIDADE
 `SEÇÃO 1 - INFORMAÇÕES GERAIS`
 
@@ -179,7 +183,7 @@ Para a solução de controvérsias decorrentes do presente instrumento será apl
 Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.
 
 
-### 8. Implementação de políticas robustas de segurança para senhas.
+### 9. Implementação de políticas robustas de segurança para senhas.
 Criterios para uma senha forte 
 A medida que o usuário digita a senha o app verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo incrementa 20pts na forca da senha :
 * Se a senha for maior ou igual a 8 
