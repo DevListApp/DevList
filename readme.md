@@ -1,6 +1,6 @@
 # Documentação DevList
 
-- Aplicativo Versão 1.0
+- Aplicativo Versão 2.0.0
     
     
 
@@ -50,8 +50,6 @@ A função login é o método para acessar o aplicativo. Login (de “conectar�
 ### 2. Função Cadastro
 
 A função cadastro é o método principal para acessar o aplicativo. O primeiro acesso do usuário deve ser por esta função, onde ele devera cadastrar no banco de dados, as informação que são solicitadas, como email e senha, como principais requisitos iniciais.
-    - Função gerador de senha forte:
-        Um gerador de senha forte é uma ferramenta essencial na proteção digital hoje em dia. Ele cria combinações complexas de letras maiúsculas, minúsculas, números e caracteres especiais, mais letras e numeros dificultando ataques de força bruta. Essas senhas são praticamente impossíveis de serem adivinhadas, proporcionando uma camada robusta de segurança para contas online e dados sensíveis. Além de garantir a segurança, um bom gerador de senha permite personalização, como ajuste de comprimento e tipos específicos de caracteres. Utilizar senhas fortes é fundamental para proteger informações contra hackers e garantir a privacidade pessoal e empresarial na era digital. Um botão para registro de usuário que realiza validações de senha e campos obrigatórios antes de exibi um alerta para aceitar os termos de uso para caso a senha não atender os critérios do app se atender os critérios do app ele cria um usuário com os dados fornecidos mostrando uma mensagem de falha ou sucesso no cadastro, caso recuse os termos o app alerta que é preciso aceitar para continuar o cadastro
 
 `[CADASTRO]`
 
@@ -89,9 +87,12 @@ Ao adicionar uma tarefa no aplicativo, é possível definir dois prazos essencia
 
 A função de validação de e-mail garante que apenas endereços de e-mail válidos sejam aceitos no sistema, por exemplo os que possuem "@gmail.com" e outros domínios considerados válidos. Ao inserir um endereço de e-mail, o sistema verifica se ele contém o símbolo "@" e se o domínio está na lista de domínios permitidos. Caso ambas as condições sejam atendidas, o sistema considera o e-mail como válido, permitindo a sua utilização no contexto desejado. Essa abordagem restrita ajuda a manter a integridade dos dados e a garantir que apenas e-mails permitidos sejam aceitos pelo sistema.
 
-## 8. Política de privacidade 
+### 8. Função gerador de senha forte  
 
-### POLÍTICA DE PRIVACIDADE
+Um gerador de senha forte é uma ferramenta essencial na proteção digital hoje em dia. Ele cria combinações complexas de letras maiúsculas, minúsculas, números e caracteres especiais, mais letras e numeros dificultando ataques de força bruta. Essas senhas são praticamente impossíveis de serem adivinhadas, proporcionando uma camada robusta de segurança para contas online e dados sensíveis. Além de garantir a segurança, um bom gerador de senha permite personalização, como ajuste de comprimento e tipos específicos de caracteres. Utilizar senhas fortes é fundamental para proteger informações contra hackers e garantir a privacidade pessoal e empresarial na era digital. Um botão para registro de usuário que realiza validações de senha e campos obrigatórios antes de exibi um alerta para aceitar os termos de uso para caso a senha não atender os critérios do app se atender os critérios do app ele cria um usuário com os dados fornecidos mostrando uma mensagem de falha ou sucesso no cadastro, caso recuse os termos o app alerta que é preciso aceitar para continuar o cadastro****
+
+# Política de privacidade 
+
 `SEÇÃO 1 - INFORMAÇÕES GERAIS`
 
 A presente Política de Privacidade contém informações sobre coleta, uso, armazenamento, tratamento e proteção dos dados pessoais dos usuários e visitantes do aplicativo DevList, com a finalidade de demonstrar absoluta transparência quanto ao assunto e esclarecer a todos interessados sobre os tipos de dados que são coletados, os motivos da coleta e a forma como os usuários podem gerenciar ou excluir as suas informações pessoais.
@@ -175,19 +176,20 @@ Para a solução de controvérsias decorrentes do presente instrumento será apl
 Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.
 
 
-## 9. Implementação de políticas robustas de segurança para senhas.
+# Implementação de políticas robustas de segurança para senhas.
 
 Criterios para uma senha forte 
-A medida que o usuário digita a senha o app verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo incrementa 20pts na forca da senha :
+A medida que o usuário digita a senha o aplicativo verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo será adicionado 20 pontos na força da senha:
 * Se a senha for maior ou igual a 8 
 * Se a senha conter de letras maiúsculas  
 * Se a senha conter letras minúsculas  
 * Se a senha conter números 
 * Se a senha conter caracteres especiais
-Contendo todos esses critérios retornando 100 na forca da senha a senha é aceita e o cadastro feito, não contendo os critérios ele não retorna 100 e mostra um alerta de senha fraca
-outra opção é o usuário clicar num botão de gerador de senha forte, esta senha forte atingira todos os requisitos  
+  
+Contendo todos esses critérios retornando 100 na força da senha ela será aceita e o cadastro concluído, não contendo os critérios ele não retorna 100 e mostra um alerta de senha fraca,
+outra opção é o usuário clicar em um botão de gerador de senha forte, esta senha forte atingirá todos os requisitos  
 
-## Funcionalidades
+# Funcionalidades
 
 - Adicionar tarefa
 - Editar Tarefa
@@ -202,7 +204,7 @@ outra opção é o usuário clicar num botão de gerador de senha forte, esta se
 - Gerador de senha
 - Recuperação de Senha
 
-## Tecnologias Usadas
+# Tecnologias Usadas
 
 - Java
 - Firebase
