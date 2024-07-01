@@ -187,7 +187,14 @@ A medida que o usuário digita a senha o aplicativo verifica se atende todos os 
 * Se a senha conter caracteres especiais
   
 Contendo todos esses critérios retornando 100 na força da senha ela será aceita e o cadastro concluído, não contendo os critérios ele não retorna 100 e mostra um alerta de senha fraca,
-outra opção é o usuário clicar em um botão de gerador de senha forte, esta senha forte atingirá todos os requisitos  
+outra opção é o usuário clicar em um botão de gerador de senha forte, esta senha forte atingirá todos os requisitos.
+
+# Segredos e variáveis (Secrets and variables)
+
+Os segredos permitem que você armazene informações confidenciais na sua organização, repositório ou em ambientes do repositório.
+Pode ser utilizado o método de segredos do GitHub Actions, que é uma plataforma de integração e entrega contínua (CI/CD) que permite automatizar processos de build, teste e deploy de código. E permite armazenar quaisquer dados privados que deseja usar no fluxo de trabalho de ações do GitHub. Os segredos são criados como pares de chave/valor no nível do repositório ou da organização. 
+
+Documentação: <a href="https://docs.google.com/document/d/1q83xItecKHnjBb6uD4Svw0c0fT3-uafRON_P2gkzNCc/edit?usp=sharing">SAIBA MAIS</a>
 
 # Funcionalidades
 
