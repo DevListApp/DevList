@@ -178,10 +178,9 @@ Diante da fusão ou venda da plataforma à outra empresa os dados dos usuários 
 Para a solução de controvérsias decorrentes do presente instrumento será aplicado integralmente o Direito brasileiro.
 Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.
 
-`SEÇÃO 10 – GERADOR DE SENHA FORTE`
 
-Gerador de senha forte
-
+### 8. Implementação de políticas robustas de segurança para senhas.
+Criterios para uma senha forte 
 A medida que o usuário digita a senha o app verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo incrementa 20pts na forca da senha :
 * Se a senha for maior ou igual a 8 
 * Se a senha conter de letras maiúsculas  
