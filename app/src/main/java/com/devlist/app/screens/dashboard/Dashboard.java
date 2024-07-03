@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -26,6 +27,7 @@ import com.devlist.app.screens.profile.Profile;
 import com.devlist.app.screens.splash_screens.SplashScreen2;
 import com.devlist.app.screens.task.CreateTask;
 import com.devlist.app.screens.task.UpdateTask;
+import com.devlist.app.screens.user.RegisterUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.Serializable;
@@ -99,10 +101,7 @@ public class Dashboard extends AppCompatActivity {
         btnHomePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userRepository.logoutUser();
-                Intent intent = new Intent(getApplicationContext(), SplashScreen2.class);
-                startActivity(intent);
-                finish();
+                Toast.makeText(Dashboard.this, "Você já está nessa tela!", Toast.LENGTH_SHORT).show();
             }
         });
 

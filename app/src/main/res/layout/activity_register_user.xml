@@ -139,7 +139,9 @@
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/cardview_dark_background"
                         android:hint="Sua melhor senha"
+                        android:maxLength="10"
                         />
+
                 </androidx.cardview.widget.CardView>
 
                 <ProgressBar
@@ -183,7 +185,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sua senha deve ter 8 ou mais caracteres, contendo: letras maiúsculas, minúsculas, caracteres especiais e números"
+                    android:text="Sua senha deve ter entre 8 e 10 caracteres, contendo: letras maiúsculas, minúsculas, caracteres especiais e números"
                     android:textColor="@color/orange"
                     android:textSize="16sp">
                 </TextView>
@@ -223,7 +225,8 @@
                         android:inputType="textPassword"
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/cardview_dark_background"
-                        android:hint="Confirme sua senha" />
+                        android:hint="Confirme sua senha"
+                        android:maxLength="10"/>
                 </androidx.cardview.widget.CardView>
 
 

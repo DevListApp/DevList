@@ -172,6 +172,7 @@ public class RegisterUser extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String password = s.toString();
+
                 int strength = calculatePasswordStrength(password);
                 if(strength == 100) {
                     password_strong = true;
