@@ -1,10 +1,10 @@
-# Documentação DevList
+# 📚 Documentação DevList
 
-- Aplicativo Versão 2.0.0
+- 📍 Aplicativo Versão 2.0.0
     
     
 
-# Sobre o DevList
+# 📃 Sobre o DevList
 
 O **DevList** é um aplicativo dedicado a simplificar a gestão de tarefas e checklists para todos os usuários. Desenvolvido com praticidade e eficiência em mente, o DevList oferece uma interface intuitiva para criar, organizar e monitorar listas de tarefas, proporcionando uma experiência otimizada para o dia a dia.
 
@@ -15,7 +15,7 @@ O **DevList** é um aplicativo dedicado a simplificar a gestão de tarefas e che
 
 “List” significa “Lista”, que são lista de tarefas ou até mesmo checklist, que são ferramentas eficazes, para simplificar as atividades do dia a dia, conseguindo dividir as etapas em partes, e serem resolvidas com mais praticidade e eficiência.
 
-## Projeto Inicial
+## 🎉 Projeto Inicial
 
 ### Protótipo
 
@@ -33,13 +33,13 @@ Ao desenvolver um design intuitivo, nós buscamos criar interfaces que sigam pad
 
 A harmonização no design se concentra na estética, na combinação de cores, tipografia, formas e layouts para criar uma experiência visualmente agradável e coesa. A harmonia visual reduz a carga cognitiva do usuário, facilitando a absorção de informações e a navegação.
 
-# Instalação
+# ⚙️ Instalação
 
 ## Requisitos do Sistema
 
-- Android 7.0 ou superior
+- 📍 Android 7.0 ou superior
 
-# Funcionalidades
+# ✨ Funcionalidades
 
 ### 1. Função Login
 
@@ -91,7 +91,7 @@ A função de validação de e-mail garante que apenas endereços de e-mail vál
 
 Um gerador de senha forte é uma ferramenta essencial na proteção digital hoje em dia. Ele cria combinações complexas de letras maiúsculas, minúsculas, números e caracteres especiais, mais letras e numeros dificultando ataques de força bruta, como mencionado na 'Implementação de políticas robustas de segurança para senhas' que explica afundo os criterios. Essas senhas são praticamente impossíveis de serem adivinhadas, proporcionando uma camada robusta de segurança para contas online e dados sensíveis. Além de garantir a segurança, um bom gerador de senha permite personalização, como ajuste de comprimento e tipos específicos de caracteres. Utilizar senhas fortes é fundamental para proteger informações contra hackers e garantir a privacidade pessoal e empresarial na era digital. Um botão para registro de usuário que realiza validações de senha e campos obrigatórios antes de exibi um alerta para aceitar os termos de uso para caso a senha não atender os critérios do app se atender os critérios do app ele cria um usuário com os dados fornecidos mostrando uma mensagem de falha ou sucesso no cadastro, caso recuse os termos o app alerta que é preciso aceitar para continuar o cadastro.
 
-# Política de privacidade 
+# 🎯 Política de privacidade 
 
 `SEÇÃO 1 - INFORMAÇÕES GERAIS`
 
@@ -176,7 +176,7 @@ Para a solução de controvérsias decorrentes do presente instrumento será apl
 Os eventuais litígios deverão ser apresentados no foro da comarca em que se encontra a sede da empresa.
 
 
-# Implementação de políticas robustas de segurança para senhas.
+# 🔒 Implementação de políticas robustas de segurança para senhas.
 
 Criterios para uma senha forte 
 A medida que o usuário digita a senha o aplicativo verifica se atende todos os critérios para melhor segurança do usuário, aqui estão os critérios de uma senha forte a cada critério atingindo será adicionado 20 pontos na força da senha:
@@ -189,14 +189,14 @@ A medida que o usuário digita a senha o aplicativo verifica se atende todos os 
 Contendo todos esses critérios retornando 100 na força da senha ela será aceita e o cadastro concluído, não contendo os critérios ele não retorna 100 e mostra um alerta de senha fraca,
 outra opção é o usuário clicar em um botão de gerador de senha forte, esta senha forte atingirá todos os requisitos.
 
-# Segredos e variáveis (Secrets and variables)
+# 🔑 Segredos e variáveis (Secrets and variables)
 
 Os segredos permitem que você armazene informações confidenciais na sua organização, repositório ou em ambientes do repositório.
 Pode ser utilizado o método de segredos do GitHub Actions, que é uma plataforma de integração e entrega contínua (CI/CD) que permite automatizar processos de build, teste e deploy de código. E permite armazenar quaisquer dados privados que deseja usar no fluxo de trabalho de ações do GitHub. Os segredos são criados como pares de chave/valor no nível do repositório ou da organização. 
 
 Documentação: <a href="https://docs.google.com/document/d/1q83xItecKHnjBb6uD4Svw0c0fT3-uafRON_P2gkzNCc/edit?usp=sharing">SAIBA MAIS</a>
 
-# Funcionalidades
+# ✨ Funcionalidades
 
 - Adicionar tarefa
 - Editar Tarefa
@@ -211,7 +211,7 @@ Documentação: <a href="https://docs.google.com/document/d/1q83xItecKHnjBb6uD4S
 - Gerador de senha
 - Recuperação de Senha
 
-# Tecnologias Usadas
+# 🔭 Tecnologias Usadas
 
 - Java
 - Firebase
