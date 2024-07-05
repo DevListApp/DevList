@@ -196,6 +196,16 @@ Pode ser utilizado o método de segredos do GitHub Actions, que é uma plataform
 
 Documentação: <a href="https://docs.google.com/document/d/1q83xItecKHnjBb6uD4Svw0c0fT3-uafRON_P2gkzNCc/edit?usp=sharing">SAIBA MAIS</a>
 
+# 🔐 Regras de segurança no firebase
+
+As regras de segurança do Firebase são um conjunto de diretrizes que determinam quem tem permissão para acessar e modificar os dados em seu banco de dados do Firebase (Firestore) e no armazenamento do Firebase (Firebase Storage). Essas regras são essenciais para garantir a segurança, privacidade e integridade dos dados em suas aplicações.
+
+- Controle de Acesso:
+
+Definem quem pode ler e escrever dados em seu banco de dados ou armazenamento.
+Permitem configurar permissões específicas para diferentes usuários ou grupos de usuários.
+
+
 # ✨ Funcionalidades
 
 - Adicionar tarefa
